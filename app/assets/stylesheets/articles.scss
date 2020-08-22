@@ -3,10 +3,30 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+//文章的内容
 .article_content {
   border: 1px solid #dddddd;
   border-radius: 5px;
   background-color: #ffffff;
   margin-top: 10px;
-  padding: 5px 20px ;
+  padding: 5px 20px;
+}
+
+//首页的文章之间间隔
+#blog_info {
+  margin-top: 5px;
+}
+
+//文章下面的评论，鼠标划过则改变背景颜色
+.comments-content:hover {
+  background: #CCCCCC;
+}
+
+//鼠标悬停在标签上时变成手
+.tag:hover {
+  cursor: pointer
+}
+//标签的背景颜色
+.tag{
+  background: yellow;
 }

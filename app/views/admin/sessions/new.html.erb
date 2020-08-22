@@ -1,0 +1,17 @@
+<!--<div class="row small-12 large-8 columns">-->
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>登录后台</h1>
+    <br>
+    <div>
+      <%= form_for(:session, url: admin_sessions_path) do |f| %>
+        <p><%= f.label :username, "用户名" %>
+          <%= f.text_field :username, class: "form-control" %></p>
+        <p><%= f.label :password, "密码" %>
+          <%= f.password_field :password, class: "form-control" %></p>
+        <p><%= f.submit "登录", class: "btn btn-primary" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

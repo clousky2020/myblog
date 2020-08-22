@@ -1,0 +1,11 @@
+<div id="right_comments" class="col-4">
+  <div class="right_side">
+    <h3>最新的评论</h3>
+    <% comments.each do |comment| %>
+      <div class="comments_content">
+        <%= truncate comment.content,length:20 %><br>
+        --- <%= link_to comment.article.title, article_path(comment.article) %>
+      </div>
+    <% end %>
+  </div>
+</div>

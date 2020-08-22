@@ -1,11 +1,14 @@
-<nav class="navbar navbar-expand-sm bg-light fixed-top">
-
-  <ul class="navbar-nav">
+<nav class="navbar navbar-expand-sm bg-light fixed-top justify-content-center">
+  <a class="navbar-brand" href="#">Logo</a>
+  <ul class="nav ">
     <li class="nav-item"><%= link_to "主页", root_url %></li>
-    <li class="nav-item"><%= link_to "后台", '#' %></li>
-    <li class="nav-item"><%= link_to "新建", new_article_path %></li>
-    <li class="nav-item"><%= link_to "文章列表", '#' %></li>
-    <li class="nav-item"><%= link_to "关于博主", "#" %></li>
+    <li class="nav-item"><%= link_to "文章列表", articles_url %></li>
+    <li class="nav-item"><%= link_to "关于博主", about_path %></li>
+    <% if session[:login] == true %>
+      <li class="nav-item"><%= link_to "新建", new_admin_article_path %></li>
+      <li class="nav-item"><%= link_to "退出", admin_logout_path %>
+    <% else %>
+      <li class="nav-item"><%= link_to "登录", new_admin_session_path %></li>
+    <% end %>
   </ul>
-
 </nav>

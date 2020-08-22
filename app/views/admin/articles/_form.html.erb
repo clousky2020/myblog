@@ -1,0 +1,49 @@
+
+<div class="col-12">
+  <%= form_for @article do |f| %>
+    <%= render 'shard/error_messages', object: f.object %>
+    <p>
+      <%= f.label :title, "标题" %><br>
+      <%= f.text_field :title, class: "form-control" %>
+    </p>
+    <p>
+      <%= label_tag :label, "标签" %>
+      <%= text_field_tag :label, @article.labels_content(true), class: "form-control" %>
+    </p>
+    <div>
+      <span>已有标签:</span>
+      <span>
+        <% Label.all.each do |label| %>
+          <a class="tag"><%= label.name %></a>
+        <% end %>
+      </span>
+    </div>
+    <div>
+      <%= f.label :content, "内容" %><br>
+      <%= f.cktext_area :content, ckeditor: {language: 'zh-CN'}, class: "form-control", style: "resize:none", rows: 5 %>
+    </div>
+
+    <div align="right">
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+        // 新建文章时，单击以前的标签直接填入标签框
+        $(".tag").click(function () {
+            var new_label = $(this).text();
+            if ($('#label').val() == "") {
+                $('#label').val(new_label);
+            } else {
+                $('#label').val($('#label').val() + ',' + new_label);
+            }
+        });
+        $("#upload_photo").click(function () {
+            $('input[type=file]').show().focus();
+        });
+    });
+</script>

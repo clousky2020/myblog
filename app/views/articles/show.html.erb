@@ -1,4 +1,37 @@
-<div class="article_content">
-  <h1><%= @article.title %></h1>
-  <p><%= @article.text %></p>
+<% provide(:title, @article.title) %>
+<div class="row">
+  <div class="col-12">
+    <div class="article_content">
+      <h3><%= @article.title %></h3>
+      <table class="table">
+        <tr>
+          <td class="item"><%= @article.created_at.to_formatted_s(:db) %></td>
+          <td class="item"><%= image_tag "标签.svg", height: 20 %> <%= @article.labels.map {|i| i.name}.join(",") %></td>
+          <td class="item"><%= image_tag "articleReadEyes.png", height: 20 %> <%= @article.views %></td>
+          <td class="item"><%= image_tag "评论.svg", height: 20 %> <%= @article.comments.length %></td>
+        </tr>
+      </table>
+      <p><%= raw @article.content %></p>
+    </div>
+
+    <hr size="1" noshade="noshade"/>
+    <div class="comment">
+      <%= form_for [@article, @article.comments.build], remote: true do |f| %>
+        <div class="form_content">
+          <%= f.text_area :content, class: "form-control", style: "resize:none", rows: 5, placeholder: "发表你的评论……" %>
+          <%= f.text_field :name, value: cookies[:name], class: "form-control", placeholder: "名字" %>
+          <%= f.text_field :email, value: cookies[:email], class: "form-control", placeholder: "邮箱 your@example.com" %>
+        </div>
+        <div align="right">
+          <%= f.submit "发布评论", class: "btn btn-primary", align: "right" %>
+        </div>
+        <%= render 'shard/error_messages', object: f.object %>
+      <% end %>
+
+      <div id="comments_content">
+        <%= render "article_comments", article: @article %>
+      </div>
+
+    </div>
+  </div>
 </div>

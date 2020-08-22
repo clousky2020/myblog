@@ -1,0 +1,6 @@
+//下方评论区刷新
+$('#comments_content').replaceWith('<%= j render 'articles/article_comments', article: @article%>');
+//去掉错误提示
+$('#error_explanation').replaceWith(' <%= j render 'shard/error_messages',object:@comment %>');
+//输入框清空
+$("#comment_content").val("");
