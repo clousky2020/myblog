@@ -1,10 +1,10 @@
-<div id="index_content">
+<div id="admin_index_content">
   <div class="row">
     <div class="col-8">
       <% if @articles.length == 0 %>
         <div class="small-12 large-8 columns">
           <p>
-            还没有一篇文章，点击<%= link_to "新写博文", new_admin_article_path %>去写一篇新的内容吧。
+            还没有一篇文章，登录后台<%= link_to "新写博文", admin_articles_path %>去写一篇新的内容吧。
           </p>
         </div>
       <% else %>
@@ -12,13 +12,16 @@
           <% @articles.each do |article| %>
             <div id="blog_info" class="small-12 large-8 columns">
               <h4 class="blog-title"><%= link_to article.title, article_path(article) %></h4>
-              <p class="blog_ptag"><%= image_tag "标签.svg", height: 20 %><%= article.labels.map {|i| i.name}.join(",") %></p>
+              <p class="blog_ptag">
+                <%= article.created_at.strftime('%Y-%m-%d') %>
+                <%= image_tag "标签.svg", height: 20 %><%= article.labels.map {|i| i.name}.join(",") %>
+              </p>
               <p class="blog_content"><%= truncate(article.content, :length => 20) %></p>
-              <p align="right">发表于<%= article.created_at.strftime('%Y-%m-%d') %></p>
+
             </div>
           <% end %>
         </div>
-        <%= paginate @articles %>
+        <div class="pagination"><%= paginate @articles %></div>
       <% end %>
     </div>
     <%= render "comments/comment", comments: @comments %>

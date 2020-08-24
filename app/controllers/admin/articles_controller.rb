@@ -2,6 +2,11 @@ class Admin::ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   before_action :all_comments, only: [:show, :edit, :index, :new]
   before_action :authenticate_user
+  layout "layouts/admin"
+
+  def index
+    @articles = Article.all.order("created_at DESC").page params[:page]
+  end
 
   def new
     @article = Article.new
@@ -16,10 +21,10 @@ class Admin::ArticlesController < ApplicationController
     initialize_or_create_labels(labels)
     if @article.save
       flash[:notice] = "创建成功"
-      redirect_to articles_url
+      redirect_to admin_articles_url
     else
       flash.now[:error] = "创建失败"
-      render articles_url
+      render admin_articles_url
     end
   end
 
@@ -29,17 +34,17 @@ class Admin::ArticlesController < ApplicationController
     initialize_or_create_labels(labels)
     if @article.update(article_params)
       flash[:notice] = "成功更新"
-      redirect_to articles_url
+      redirect_to admin_articles_url
     else
       flash.now[:error] = "更新失败"
-      render :edit
+      render 'admin/articles/edit'
     end
 
   end
 
   def destroy
     @article.destroy
-    redirect_to articles_url
+    redirect_to admin_articles_url
   end
 
 

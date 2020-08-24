@@ -12,13 +12,18 @@
  *
  *= require_tree .
  *= require_self
-
  */
 @import "bootstrap";
 //= link ckeditor
+
+
 body {
   padding-top: 60px;
-  background-image:url("background.jpg") ;
+  //background-image:url("background.jpg") ;
+}
+
+nav .navbar-brand {
+  margin-right: auto;
 }
 
 .nav-item {
@@ -28,3 +33,15 @@ body {
 #log_in {
   margin-right: 0;
 }
+
+.pagination {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+
+  span {
+    margin: 0 10px;
+  }
+}
+

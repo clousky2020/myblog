@@ -1,0 +1,42 @@
+<div id="admin_index_content">
+  <div class="row">
+    <div class="col-12">
+      <% if @articles.length == 0 %>
+        <div class="small-12 large-8 columns">
+          <p>
+            还没有一篇文章，点击<%= link_to "新写博文", new_admin_article_path %>去写一篇新的内容吧。
+          </p>
+        </div>
+      <% else %>
+        <h1>博客管理</h1>
+        <hr>
+        <table class="table table-hover table-active table-striped" style="margin: auto;">
+          <thead>
+          <tr>
+            <td>标题</td>
+            <td>概要</td>
+            <td>操作</td>
+          </tr>
+          </thead>
+          <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td><%= link_to article.title, article_path(article) %></td>
+              <td>发表于<%= article.created_at.strftime('%Y-%m-%d') %>
+                <%= image_tag "标签.svg", height: 20 %><%= article.labels.map {|i| i.name}.join(",") %>
+                <%= image_tag "articleReadEyes.png", height: 20 %> <%= article.views %>
+                <%= image_tag "评论.svg", height: 20 %> <%= article.comments.length %>
+              </td>
+              <td><%= link_to "评论", admin_article_comments_path(article) %></td>
+              <td><%= link_to "编辑", edit_admin_article_path(article) %></td>
+              <td><%= link_to "删除", admin_article_path(article), method: :delete, data: {confirm: "确定删除?"} %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+        <div class="pagination"><%= paginate @articles %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
