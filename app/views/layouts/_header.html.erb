@@ -1,7 +1,11 @@
 <nav class="navbar navbar-expand-sm bg-light fixed-top justify-content-center">
-  <a class="navbar-brand">clousky's blog</a>
-  <ul class="nav ">
-    <li class="nav-item"><%= link_to "主页", root_url %></li>
+  <%= link_to "clousky's blog", root_url, class: "navbar-brand" %>
+  <%= form_tag("/",method: "get") do %>
+    <span><%= text_field_tag "search" %></span>
+    <span><%= submit_tag "搜索" %></span>
+  <% end %>
+
+  <ul class="nav">
     <li class="nav-item"><%= link_to "文章列表", articles_url %></li>
     <li class="nav-item"><%= link_to "关于博主", about_path %></li>
     <% if session[:login] == true %>

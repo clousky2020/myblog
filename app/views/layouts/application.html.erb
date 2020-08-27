@@ -11,13 +11,15 @@
 
 <body>
 <%= render "layouts/header" %>
+
 <div class="flash_info">
   <% flash.each do |type, msg| %>
-    <div>
+    <div class="alert alert-info">
       <%= msg %>
     </div>
   <% end %>
 </div>
+
 <div class="container">
   <%= yield %>
 </div>

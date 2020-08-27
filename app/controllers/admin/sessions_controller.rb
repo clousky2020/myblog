@@ -18,16 +18,17 @@ class Admin::SessionsController < ApplicationController
       flash[:notice] = "登录成功"
       session[:login] = true
       if cookies[:urlback]
+        p "返回登录前的页面"
         redirect_to cookies[:urlback]
         cookies[:urlback] = nil
       else
-        redirect_to articles_path
+        redirect_to admin_articles_path
       end
     end
   end
 
   def destroy
     session[:login] = nil
-    redirect_to new_admin_session_path
+    redirect_to root_path
   end
 end

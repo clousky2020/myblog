@@ -18,4 +18,12 @@ class Article < ApplicationRecord
     self.save
     self.views
   end
+
+  def self.searched(search)
+    if search
+      where("title LIKE ? or content LIKE ?", "%#{search}%", "%#{search}%")
+    else
+      all
+    end
+  end
 end

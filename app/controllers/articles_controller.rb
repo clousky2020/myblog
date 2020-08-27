@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :all_comments, only: [:index]
 
   def index
-    @articles = Article.order(:id).page params[:page]
+    @articles = Article.searched(params[:search]).order(:id).page params[:page]
   end
 
   def show
@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
   def about
 
   end
+
 
   private
 

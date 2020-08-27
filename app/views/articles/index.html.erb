@@ -4,7 +4,7 @@
       <% if @articles.length == 0 %>
         <div class="small-12 large-8 columns">
           <p>
-            还没有一篇文章，登录后台<%= link_to "新写博文", admin_articles_path %>去写一篇新的内容吧。
+            没有找到博文，点击<%= link_to "新写博文", admin_articles_path %>去写一篇新的内容吧。
           </p>
         </div>
       <% else %>
@@ -24,7 +24,7 @@
         <div class="pagination"><%= paginate @articles %></div>
       <% end %>
     </div>
-    <%= render "comments/comment", comments: @comments %>
+    <%= render "shard/person_info", comments: @comments %>
 
   </div>
 </div>
