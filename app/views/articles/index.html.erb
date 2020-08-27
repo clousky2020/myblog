@@ -16,7 +16,7 @@
                 <%= article.created_at.strftime('%Y-%m-%d') %>
                 <%= image_tag "标签.svg", height: 20 %><%= article.labels.map {|i| i.name}.join(",") %>
               </p>
-              <p class="blog_content"><%= truncate(article.content, :length => 20) %></p>
+              <p class="blog_content"><%= truncate(article.content, escape: false, :length => 20) %></p>
 
             </div>
           <% end %>
