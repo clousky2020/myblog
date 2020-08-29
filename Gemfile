@@ -10,9 +10,9 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-gem 'sassc', '~> 2.1.0'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
@@ -34,14 +34,20 @@ gem 'carrierwave'
 gem 'ckeditor'
 gem 'mini_magick'
 gem 'figaro'
-gem 'mina'
-# gem 'nokogiri','1.10.10'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capistrano',         require: false
+  # gem 'capistrano-rbenv',     require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+
 end
 
 group :development do
