@@ -11,6 +11,7 @@ module Myblog
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
+    # config.secret_key_base = ''
 
     config.time_zone = 'Beijing'
     config.active_record.default_timezone = :local
