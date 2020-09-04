@@ -48,7 +48,7 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-yarn'
-  # gem 'capistrano-local-precompile', '~> 1.2.0', require: false
+  gem 'capistrano-local-precompile', '~> 1.2.0', require: false
 
 end
 
