@@ -1,11 +1,11 @@
 class Admin::ArticlesController < ApplicationController
-  before_action :find_article, only: [:show, :edit, :update, :destroy]
-  before_action :all_comments, only: [:show, :edit, :index, :new]
+  before_action :find_article, only: [:edit, :update, :destroy]
+  before_action :all_comments, only: [:edit, :index, :new]
   before_action :authenticate_user
   layout "layouts/admin"
 
   def index
-    @articles = Article.all.order("created_at DESC").page params[:page]
+    @articles = Article.searched(params[:search]).order("created_at DESC").page params[:page]
   end
 
   def new
@@ -19,12 +19,14 @@ class Admin::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     labels = params[:label].to_s
     initialize_or_create_labels(labels)
+    @article.categories.clear
+    @article.categories << Category.find(params[:article][:category_ids])
     if @article.save
       flash[:notice] = "创建成功"
       redirect_to admin_articles_url
     else
       flash.now[:error] = "创建失败"
-      render admin_articles_url
+      render "new"
     end
   end
 
@@ -32,19 +34,26 @@ class Admin::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     labels = params[:label].to_s
     initialize_or_create_labels(labels)
+    @article.categories.clear
+    @article.categories << Category.find(params[:article][:category_ids])
     if @article.update(article_params)
       flash[:notice] = "成功更新"
       redirect_to admin_articles_url
     else
       flash.now[:error] = "更新失败"
-      render 'admin/articles/edit'
+      render 'edit'
     end
 
   end
 
   def destroy
-    @article.destroy
-    redirect_to admin_articles_url
+    if @article.destroy and @article.categories.clear
+      flash[:success] = "文章删除成功"
+      redirect_to admin_articles_url
+    else
+      flash[:error] = "文章删除失败，原因是#{@article.errors.full_messages.to_s}"
+      render "index"
+    end
   end
 
 
@@ -59,7 +68,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content, :category_ids)
   end
 
   def initialize_or_create_labels(labels)

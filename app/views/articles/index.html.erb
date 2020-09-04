@@ -1,30 +1,45 @@
-<div id="admin_index_content">
-  <div class="row">
-    <div class="col-8">
-      <% if @articles.length == 0 %>
-        <div class="small-12 large-8 columns">
-          <p>
-            没有找到博文，点击<%= link_to "新写博文", admin_articles_path %>去写一篇新的内容吧。
-          </p>
-        </div>
-      <% else %>
-        <div id="index_blog" class="small-12 large-8 columns">
-          <% @articles.each do |article| %>
-            <div id="blog_info" class="small-12 large-8 columns">
-              <h4 class="blog-title"><%= link_to article.title, article_path(article) %></h4>
-              <p class="blog_ptag">
-                <%= article.created_at.strftime('%Y-%m-%d') %>
-                <%= image_tag "标签.svg", height: 20 %><%= article.labels.map {|i| i.name}.join(",") %>
-              </p>
-              <p class="blog_content"><%= truncate(article.content, escape: false, :length => 20) %></p>
-
-            </div>
-          <% end %>
-        </div>
-        <div class="pagination"><%= paginate @articles %></div>
-      <% end %>
-    </div>
-    <%= render "shard/person_info", comments: @comments %>
-
+<header class="masthead home-background-<%= [*1, 2].sample %>">
+  <div id="sign" class="justify-content-center">
+    <h1>李文强</h1>
+    <h3>clousky</h3>
   </div>
+</header>
+
+<div class="row font-family" id="admin_index_content">
+  <div class="col-sm-auto col-md-8 col-lg-8">
+    <% if @articles.length == 0 %>
+      <div class="small-12 large-8 columns">
+        <p>
+          没有找到博文，点击<%= link_to "新写博文", admin_articles_path %>去写一篇新的内容吧。
+        </p>
+      </div>
+    <% else %>
+      <div id="index_blog" class="small-12 large-8 columns">
+        <% @articles.each do |article| %>
+          <div id="blog_info" class="small-12 large-8 columns">
+            <h4 class="blog-title"><%= link_to article.title, article_path(article) %></h4>
+            <p class="blog_ptag pre">
+              <% if article.categories.any? %>
+                <span>分类:<%= article.categories.first.name %></span>
+              <% end %>
+
+              <span>发文时间:<%= article.created_at.strftime('%Y-%m-%d') %></span>
+              <span>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tag" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M2 2v4.586l7 7L13.586 9l-7-7H2zM1 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2z"/>
+                  <path fill-rule="evenodd" d="M4.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                </svg>
+                <%= article.labels.map {|i| i.name}.join(",") %>
+              </span>
+            </p>
+            <p class="blog_content"><%= truncate(article.content, escape: false, :length => 20) %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="pagination"><%= paginate @articles %></div>
+    <% end %>
+  </div>
+  <%= render "shard/right_info", comments: @comments %>
+
 </div>
+

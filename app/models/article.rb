@@ -5,6 +5,7 @@ class Article < ApplicationRecord
   validates :content, presence: {message: "内容不能为空"}
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :labels
+  has_and_belongs_to_many :categories
 
 
   def labels_content(need_blank = false)
@@ -13,11 +14,6 @@ class Article < ApplicationRecord
     content
   end
 
-  def visited
-    self.views += 1
-    self.save
-    self.views
-  end
 
   def self.searched(search)
     if search
@@ -26,4 +22,17 @@ class Article < ApplicationRecord
       all
     end
   end
+
+  def change_title_id
+    text = self.content
+    pattern = /<h\d>.*<\/h\d>/
+    matchs = text.scan(pattern)
+    matchs.each do |string|
+      h_num = string.match(/<h(\d)>/)[-1]
+      id_text = string.match(/>(.*)</)[-1]
+      text.sub!(pattern, "<h#{h_num} id='#{id_text}'>#{id_text}</h#{h_num}>")
+    end
+    text
+  end
+
 end

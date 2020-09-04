@@ -1,0 +1,32 @@
+<div class="col-4"></div>
+<div class="container-fluid col-12">
+  <div class="row">
+    <div id="article_card" class="card bg-info col-xl-3 col-sm-6 mb-3">
+      <div class="card-body">
+        <h5 class="card-title">博客文章</h5>
+        <p class="card-text">目前有<%= @articles_num %>篇</p>
+        <%= link_to "查看详情", admin_articles_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+    <div id="comment_card" class="card bg-info col-xl-3 col-sm-6 mb-3">
+      <div class="card-body">
+        <h5 class="card-title">评论</h5>
+        <p class="card-text">目前一共有<%= @comments_num %>条</p>
+        <p class="card-text">请进博客管理中相应博客的评论里查看</p>
+      </div>
+    </div>
+    <div id="comment_card" class="card bg-success col-xl-3 col-sm-6 mb-3">
+      <div class="card-body">
+        <h5 class="card-title">文章分类</h5>
+        <p class="card-text">设定分类的标签</p>
+        <%= link_to "查看详情", admin_categorys_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+    <div id="resume_card" class="card col-xl-3 col-sm-6 mb-3">
+      <div class="card-body">
+        <h5 class="card-title">个人简介(暂无)</h5>
+        <%#= link_to "查看详情", admin_articles_path,class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

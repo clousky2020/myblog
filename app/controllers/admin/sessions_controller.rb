@@ -22,7 +22,7 @@ class Admin::SessionsController < ApplicationController
         redirect_to cookies[:urlback]
         cookies[:urlback] = nil
       else
-        redirect_to admin_articles_path
+        redirect_to admin_root_path
       end
     end
   end

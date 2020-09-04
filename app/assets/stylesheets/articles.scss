@@ -26,7 +26,56 @@
 .tag:hover {
   cursor: pointer
 }
+
 //标签的背景颜色
-.tag{
+.tag {
   background: yellow;
 }
+
+//主页首要内容
+header.masthead {
+  margin: 0;
+  position: relative;
+
+  #sign {
+    text-align: center;
+    padding: 25% 0;
+    color: white;
+  }
+}
+
+//主页的背景图
+header.home-background-1 {
+  height: 100%;
+  background-image: image_url('index-bg-1.jpg');
+  background-size: cover;
+}
+
+header.home-background-2 {
+  height: 100%;
+  background-image: image_url('index-bg-2.jpg');
+  background-size: cover;
+}
+
+.blog_ptag span {
+  margin: 0 10px;
+}
+
+.show-bg {
+  height: 100%;
+  background-image: image_url("index-bg-1.jpg");
+  background-size: cover;
+}
+
+//右侧目录框
+#comments_content {
+  border-radius: 5px;
+  background-color: white;
+}
+
+//主页上文本的字体大小
+//#blog_info {
+//  h2 h3 h4 h5 h6 {
+//    font-size: small;
+//  }
+//}

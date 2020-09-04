@@ -1,42 +1,63 @@
 <div id="admin_index_content">
-  <div class="row">
-    <div class="col-12">
-      <% if @articles.length == 0 %>
-        <div class="small-12 large-8 columns">
-          <p>
-            还没有一篇文章，点击<%= link_to "新写博文", new_admin_article_path %>去写一篇新的内容吧。
-          </p>
-        </div>
-      <% else %>
-        <h1>博客管理</h1>
-        <hr>
-        <table class="table table-hover table-active table-striped" style="margin: auto;">
-          <thead>
-          <tr>
-            <td>标题</td>
-            <td>概要</td>
-            <td>操作</td>
-          </tr>
-          </thead>
-          <tbody>
-          <% @articles.each do |article| %>
-            <tr>
-              <td><%= link_to article.title, article_path(article) %></td>
-              <td>发表于<%= article.created_at.strftime('%Y-%m-%d') %>
-                <%= image_tag "标签.svg", height: 20 %><%= article.labels.map {|i| i.name}.join(",") %>
-                <%= image_tag "articleReadEyes.png", height: 20 %> <%= article.views %>
-                <%= image_tag "评论.svg", height: 20 %> <%= article.comments.length %>
-              </td>
-              <td><%= link_to "评论", admin_article_comments_path(article) %></td>
-              <td><%= link_to "编辑", edit_admin_article_path(article) %></td>
-              <td><%= link_to "删除", admin_article_path(article), method: :delete, data: {confirm: "确定删除?"} %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
 
-        <div class="pagination"><%= paginate @articles %></div>
-      <% end %>
+  <div class="col-12">
+    <h1>博客管理</h1>
+    <div class="row" style="justify-content: space-between;margin: 0;">
+      <span><%= link_to "新建博客", new_admin_article_path, class: "btn btn-primary" %></span>
+      <span>
+          <%= form_tag admin_articles_path, method: "get", class: "form-inline" do %>
+            <%= text_field_tag "search", nil, class: "form-control mr-sm-2", placeholder: "标题和内容搜索" %>
+          <%= submit_tag "搜索", class: "btn btn-outline-success my-2 my-sm-0" %>
+          <% end %>
+        </span>
     </div>
+    <hr>
+    <% if @articles.length == 0 %>
+      <div class="small-12 large-8 columns">
+        <p>
+          还没有一篇文章，点击<%= link_to "新写博文", new_admin_article_path %>去写一篇新的内容吧。
+        </p>
+      </div>
+    <% else %>
+
+      <table class="table table-hover table-active table-striped" style="margin: auto;">
+        <thead>
+        <tr>
+          <td>标题</td>
+          <td>分类</td>
+          <td>标签</td>
+          <td>评论数</td>
+          <td>浏览量</td>
+          <td>创建时间</td>
+          <td>修改时间</td>
+          <td>操作</td>
+          <td>操作</td>
+          <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <% @articles.each do |article| %>
+          <tr>
+            <td><%= link_to article.title, article_path(article) %></td>
+            <% if article.categories.any? %>
+              <td><%= article.categories.first.name %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+            <td><%= article.labels.map {|i| i.name}.join(",") %></td>
+            <td> <%= article.comments.length %></td>
+            <td> <%= article.views %> </td>
+            <td><%= article.created_at.strftime('%Y-%m-%d') %></td>
+            <td><%= article.updated_at.strftime('%Y-%m-%d') %></td>
+            <td><%= link_to "评论", admin_article_comments_path(article) %></td>
+            <td><%= link_to "编辑", edit_admin_article_path(article) %></td>
+            <td><%= link_to "删除", admin_article_path(article), method: :delete, data: {confirm: "确定删除?"} %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    <% end %>
   </div>
+
 </div>

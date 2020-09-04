@@ -9,9 +9,9 @@
   <%= javascript_include_tag Ckeditor.cdn_url %>
 </head>
 
-<body>
-<%= render "layouts/header" %>
+<body class= <%= yield(:bg) %>>
 
+<%= render "layouts/header" %>
 <div class="flash_info">
   <% flash.each do |type, msg| %>
     <div class="alert alert-info">
@@ -24,5 +24,6 @@
   <%= yield %>
 </div>
 
+<%= render 'layouts/footer' %>
 </body>
 </html>

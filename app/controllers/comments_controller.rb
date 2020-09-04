@@ -15,8 +15,6 @@ class CommentsController < ApplicationController
       @comments = @article.comments.order(created_at: :desc)
       render :create_ok
     else
-      p @comment.errors
-      p @comment.errors.full_messages
       render :create_fail
     end
   end

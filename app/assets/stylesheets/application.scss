@@ -22,13 +22,10 @@ body {
   //background-image:url("background.jpg") ;
 }
 
-nav .navbar-brand {
-
-  margin-right: auto;
-}
 
 .nav-item {
   margin-left: 10px;
+  font-size: x-large;
 }
 
 #log_in {
@@ -46,3 +43,29 @@ nav .navbar-brand {
   }
 }
 
+#qrcode {
+  margin-top: 10%;
+
+  img {
+    width: 100%;
+  }
+}
+
+.footer {
+  padding: 5%;
+  background-color: white;
+}
+
+//文章右侧目录栏
+#catalog {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  background-color: white;
+  border-radius: 5px;
+
+  li:hover {
+    color: blue;
+    text-decoration: underline;
+  }
+}

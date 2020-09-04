@@ -1,0 +1,22 @@
+<div class="col-sm-12 col-md-4 col-lg-4 ">
+  <div id="right_comments">
+    <div class="right_side">
+      <h3>最新的评论</h3>
+      <% comments.each do |comment| %>
+        <div class="comments_content">
+          <%= truncate comment.content, length: 20 %><br>
+          --- <%= link_to comment.article.title, article_path(comment.article) %>
+        </div>
+      <% end %>
+      <div id="tag_list">
+
+      </div>
+
+      <div id="qrcode">
+        <h4 class="text-center">欢迎加我好友</h4>
+        <p><%= image_tag "wx_qrcode.jpg" %></p>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,13 +1,13 @@
 <div id="comments_content">
   <% if article.comments.any? %>
-
     <% article.comments.each do |comment| %>
-      <div class="comments-content">
-        <p><%= comment.name %> · <%= comment.created_at %></p>
-        <p><%= raw comment.content %></p>
-        <hr>
-      </div>
+      <% if comment.name != nil %>
+        <div class="comments-content">
+          <p><%= comment.name %> · <%= comment.created_at %></p>
+          <p><%= raw comment.content %></p>
+          <hr>
+        </div>
+      <% end %>
     <% end %>
-
   <% end %>
 </div>

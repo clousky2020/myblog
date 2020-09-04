@@ -1,11 +1,15 @@
 <div class="col-12">
   <%= form_for [:admin, @article] do |f| %>
     <%= render 'shard/error_messages', object: f.object %>
-    <p>
+    <p class="form-group">
       <%= f.label :title, "标题" %><br>
       <%= f.text_field :title, class: "form-control" %>
     </p>
-    <p>
+    <p class="form-group">
+      <%= f.label :category, "文章分类" %><br>
+      <%= f.collection_select(:category_ids, Category.all, :id, :name, prompt: true) %>
+    </p>
+    <p class="form-group">
       <%= label_tag :label, "标签" %>
       <%= text_field_tag :label, @article.labels_content(true), class: "form-control" %>
     </p>

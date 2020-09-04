@@ -3,18 +3,18 @@ class ArticlesController < ApplicationController
   before_action :all_comments, only: [:index]
 
   def index
-    @articles = Article.searched(params[:search]).order(:id).page params[:page]
+    @articles = Article.searched(params[:search]).order("created_at DESC").page params[:page]
   end
 
   def show
-    @article.visited
-  end
+    @article.increment!(:views, 1)
+    @catalog = @article.content.scan(/<h\d>(.*)<\/h\d>/).flatten #得到各个标题，用作后面目录的跳转
 
+  end
 
   def about
 
   end
-
 
   private
 
