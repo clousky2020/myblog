@@ -48,7 +48,7 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   # gem 'capistrano3-puma',   require: false
   gem 'capistrano-passenger'
-  gem 'capistrano-faster-assets'
+  gem 'capistrano-local-precompile'
 end
 
 group :development do
