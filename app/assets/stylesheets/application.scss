@@ -15,6 +15,7 @@
  */
 @import "bootstrap";
 //= link ckeditor
+@import "font-awesome";
 
 
 body {
@@ -47,7 +48,7 @@ body {
   margin-top: 10%;
 
   img {
-    width: 100%;
+    width: 60%;
   }
 }
 
@@ -68,4 +69,31 @@ body {
     color: blue;
     text-decoration: underline;
   }
+}
+//鼠标悬停，出现二维码
+a.weixin {
+  position: relative;
+}
+
+.weixin img.qrcode {
+  position: absolute;
+  z-index: 99;
+  top: -135px;
+  right: -28px;
+  width: 7.5rem;
+  max-width: none;
+  height: 7.5rem;
+  transform: scale(0);
+  transform-origin: top ;
+  opacity: 0;
+  border: .3125rem solid #0085ba;
+  border-radius: .25rem;
+  -webkit-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.weixin:hover img.qrcode {
+  transform: scale(1);
+  opacity: 1;
 }

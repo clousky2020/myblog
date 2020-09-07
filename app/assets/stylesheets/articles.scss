@@ -39,8 +39,8 @@ header.masthead {
 
   #sign {
     text-align: center;
-    padding: 25% 0;
-    color: white;
+    padding: 30% 0;
+    //color: gray;
   }
 }
 
@@ -49,12 +49,14 @@ header.home-background-1 {
   height: 100%;
   background-image: image_url('index-bg-1.jpg');
   background-size: cover;
+  color: greenyellow;
 }
 
 header.home-background-2 {
   height: 100%;
   background-image: image_url('index-bg-2.jpg');
   background-size: cover;
+  color: black;
 }
 
 .blog_ptag span {
