@@ -14,7 +14,7 @@
         <h3>分类筛选</h3>
         <div class="row">
           <% @categories.each do |f| %>
-            <div class="category-item col-5"><%= f %></div>
+            <div class="category-item "><%= f %></div>
           <% end %>
         </div>
       </div>
@@ -23,7 +23,7 @@
         <h3>标签筛选</h3>
         <div class="row">
           <% @labels.each do |f| %>
-            <div class="tag_item col-4"><%= f %></div>
+            <span class="tag_item "><%= f %></span>
           <% end %>
         </div>
       </div>
