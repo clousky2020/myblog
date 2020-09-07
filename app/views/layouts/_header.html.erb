@@ -3,16 +3,7 @@
   <%= link_to "clousky's blog", root_url, class: "navbar-brand mr-auto nav-item" %>
 
   <ul class="nav ml-auto">
-    <li>
-      <div class="dropdown">
-        <button class="btn dorpdown-toggle" data-toggle="dropdown">分类筛选</button>
-        <div class="dropdown-menu">
-          <% @categories.each do |f| %>
-            <a class="dropdown-item"><%= f.name %></a>
-          <% end %>
-        </div>
-      </div>
-    </li>
+
     <li>
       <%= form_tag search_path, class: "form-inline", remote: true do %>
         <span><%= text_field_tag "search", nil, class: "form-control mr-sm-2", placeholder: "标题和内容搜索" %></span>

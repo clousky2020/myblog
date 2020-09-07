@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-md-4 col-lg-4 ">
+<div id="right_info" class="col-sm-12 col-md-4 col-lg-4 ">
   <div id="right_comments">
     <div class="right_side">
       <h3>最新的评论</h3>
@@ -8,7 +8,18 @@
           --- <%= link_to comment.article.title, article_path(comment.article) %>
         </div>
       <% end %>
+
       <hr>
+      <div class="dropdown">
+        <button class="btn dorpdown-toggle" data-toggle="dropdown">分类筛选</button>
+        <div class="dropdown-menu">
+          <% @categories.each do |f| %>
+            <a class="dropdown-item"><%= f.name %></a>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+
       <div id="tag_list">
         <h3>目前已有的标签</h3>
         <div class="row">
