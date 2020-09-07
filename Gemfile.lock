@@ -78,6 +78,8 @@ GEM
       sshkit (>= 1.9.0)
     capistrano-bundler (2.0.1)
       capistrano (~> 3.1)
+    capistrano-faster-assets (1.0.2)
+      capistrano (>= 3.1)
     capistrano-local-precompile (1.2.0)
       capistrano (>= 3.8)
     capistrano-passenger (0.2.0)
@@ -279,6 +281,7 @@ DEPENDENCIES
   byebug
   capistrano
   capistrano-bundler
+  capistrano-faster-assets (~> 1.0.2)
   capistrano-local-precompile
   capistrano-passenger
   capistrano-rails

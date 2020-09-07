@@ -50,6 +50,8 @@ group :development, :test do
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-passenger'
   gem 'capistrano-local-precompile'
+  gem 'capistrano-faster-assets', '~> 1.0.2'
+
 end
 
 group :development do
