@@ -1,176 +1,102 @@
 <% provide(:title, "关于") %>
 
-<style>
-  ul,
-  li {
-    /*做时间轴的线*/
-    margin: 0;
-    padding: 0;
-  }
-
-  .layui-timeline {
-    padding-left: 5px;
-  }
-
-  .layui-timeline-item {
-    position: relative;
-    padding-bottom: 20px;
-  }
-
-  li {
-    list-style: none;
-  }
-
-  .layui-timeline-item:first-child::before {
-    display: block;
-  }
-
-  .layui-timeline-item:last-child::before {
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 0;
-    z-index: 0;
-    width: 0;
-    height: 100%;
-  }
-
-  .layui-timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 0;
-    z-index: 0;
-    width: 1px;
-    height: 100%;
-  }
-
-  .layui-timeline-item::before,
-  hr {
-    background-color: #e6e6e6;
-  }
-
-  .layui-timeline-axis {
-    position: absolute;
-    left: -5px;
-    top: 0;
-    z-index: 10;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    background-color: #fff;
-    color: #5FB878;
-    border-radius: 50%;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .layui-icon {
-    font-family: layui-icon !important;
-    font-size: 16px;
-    font-style: normal;
-  }
-
-  .layui-timeline-content {
-    padding-left: 25px;
-  }
-
-  .layui-text {
-    line-height: 22px;
-    font-size: 14px;
-    color: #666;
-  }
-
-  .layui-timeline-title {
-    position: relative;
-    margin-bottom: 10px;
-  }
-</style>
 <body>
-<div class="col-12">
+<div class="main">
   <h1>编程的历程</h1>
-  <p></p>
-  <ul class="layui-timeline">
-    <li class="layui-timeline-item">
-      <i class="layui-icon layui-timeline-axis"></i>
-      <div class="layui-timeline-content layui-text">
-        <h3 class="layui-timeline-title">2020年9月</h3>
-        <p>
-          经历了一番波折，我的个人博客终于上线了，过程中满是挫折、困惑，但最后还是挺了过来。<br>
-          不光是学习了rails，还有bootstrap、webpack、yarn、capistrano、passenger、puma等等。<br>
-          最主要的还是学会了在一个服务器上布置多个项目，也因此个人博客在经历了差点难产后终于出生在网络上了。<br>
-          回首一看，即使当时觉得再难、再不懂的内容，现在也已经踏过来了。<br>
-          没有什么是学不会的，如果有，那就再看十遍、再做百遍，现在还远远没有到拼天赋的时候！
-        </p>
-        <p>
-          <%= link_to 'GitHub', 'https://github.com/clousky2020/myblog', target: '_blank', class: 'btn btn-primary' %></p>
-      </div>
-    </li>
-    <li class="layui-timeline-item">
-      <i class="layui-icon layui-timeline-axis"></i>
-      <div class="layui-timeline-content layui-text">
-        <h3 class="layui-timeline-title">2020年6月</h3>
-        <p>
-          学习了一段时间后，为Ballu的公众号写了简易的后台系统，还有其中的两道测试题，内容是根据用户的点击问题，返回计算后的图片结果。<br>
-          有兴趣的话可以微信号添加公众号 BallU-ballu 去体验下。菜单选第一个篮球生涯里的球探报告和最佳阵容。
-        </p>
-      </div>
-    </li>
-    <li class="layui-timeline-item">
-      <i class="layui-icon layui-timeline-axis"></i>
-      <div class="layui-timeline-content layui-text">
-        <h3 class="layui-timeline-title">2020年4月</h3>
-        <p>
-          在杭州认识了技术飞人--李亚飞，也知道了Ruby这门语言，正好今年碰上疫情，抛下原来的束缚，去好好的追求当年没有坚持的编程梦。<br>
-        </p>
-      </div>
-    </li>
-    <li class="layui-timeline-item">
-      <i class="layui-icon layui-timeline-axis"></i>
-      <div class="layui-timeline-content layui-text">
-        <h3 class="layui-timeline-title">2019年4月</h3>
-        <p>
-          因为手机淘宝上天天有签到得金币的内容，但要浏览商品，手动点击每天太浪费时间了！<br>
-          最开始使用Python的uiautomator2自动进行，但这个需要连接电脑，从PC端发送指令。<br>
-          后来了解到手机端有人用JavaScript语言做了个Auto.js的脚本程序，之后就学习着使用JavaScript编写手机上的签到脚本。<br>
-        <p><%= link_to 'GitHub', 'https://github.com/clousky2020/auto.js-', target: '_blank', class: 'btn btn-primary' %></p>
-        </p>
-      </div>
-    </li>
-    <li class="layui-timeline-item">
-      <i class="layui-icon layui-timeline-axis"></i>
-      <div class="layui-timeline-content layui-text">
-        <h3 class="layui-timeline-title">2018年8月</h3>
-        <p>
-          换了工作，用到Excel表记录，工厂的生产内容涉及到一些快速运算，有了性能上的要求。<br>
-          在工作之余，再学习了VBA的编写，抛弃了Excel在大数据下慢的要死的自动计算功能，改为实时局部vba算法。<br>
-          之前有看到过二分法的理论，最终也尝试着写了出来，原来需要60~90秒的计算动作，现在能在保持在5~10秒内了。<br>
-        </p>
-      </div>
-    </li>
-
-    <li class="layui-timeline-item">
-      <i class="layui-icon layui-timeline-axis"></i>
-      <div class="layui-timeline-content layui-text">
-        <h3 class="layui-timeline-title">2016年06月</h3>
-        <p>
-          因为一个kindle推书的公众号解散了，就想着自己去做。<br>
-          接触了Python，学习了两个多月后，写了个爬虫+整合mobi+发送到Amazon邮箱的小程序.<br>
-          这个程序是自学生时代后第一次完成的实用项目。<br>
-          之后也一直实用Python做一些工作上所需的小工具。
-        </p>
-      </div>
-    </li>
-    <li class="layui-timeline-item">
-      <i class="layui-icon layui-timeline-axis"></i>
-      <div class="layui-timeline-content layui-text">
-        <!--        <h3 class="layui-timeline-title"></h3>-->
-        <p>
-          过去
-        </p>
-      </div>
-    </li>
-  </ul>
+  <h3>每一步路，都将更接近目标</h3>
 </div>
 
+<div class="timeline">
+
+  <div class="column">
+    <div class="title">
+      <h1> 2020年9月 </h1>
+      <h2> 第二个上线项目 </h2>
+    </div>
+    <div class="description">
+      <p>
+        经历了一番波折，我的个人博客终于上线了，过程中满是挫折、困惑，但最后还是挺了过来。<br>
+        不光是学习了rails，还有bootstrap、webpack、yarn、capistrano、passenger、puma等等。<br>
+        最主要的还是学会了在一个服务器上布置多个项目，也因此个人博客在经历了差点难产后终于出生在网络上了。<br>
+        回首一看，即使当时觉得再难、再不懂的内容，现在也已经踏过来了。<br>
+        没有什么是学不会的，如果有，那就再看十遍、再做百遍，现在还远远没有到拼天赋的时候！
+      </p>
+      <p>
+        <%= link_to 'GitHub', 'https://github.com/clousky2020/myblog', target: '_blank', class: 'btn btn-primary' %></p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="title">
+      <h1> 2020年6月 </h1>
+      <h2> 第一个上线项目 </h2>
+    </div>
+    <div class="description">
+      <p>
+        学习了一段时间后，为Ballu的公众号写了简易的后台系统，还有其中的两道测试题，内容是根据用户的点击问题，返回计算后的图片结果。<br>
+        有兴趣的话可以微信号添加公众号 BallU-ballu 去体验下。菜单选第一个篮球生涯里的球探报告和最佳阵容。
+      </p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="title">
+      <h1> 2020年4月 </h1>
+      <h2> 初识Ruby </h2>
+    </div>
+    <div class="description">
+      <p>
+        在杭州认识了技术飞人--李亚飞，也知道了Ruby这门语言，正好今年碰上疫情，抛下原来的束缚，去好好的追求当年没有坚持的编程梦。<br>
+      </p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="title">
+      <h1> 2019年4月 </h1>
+      <h2> 初做脚本 </h2>
+    </div>
+    <div class="description">
+      <p>
+      <p>
+        因为手机淘宝上天天有签到得金币的内容，但要浏览商品，手动点击每天太浪费时间了！<br>
+        最开始使用Python的uiautomator2自动进行，但这个需要连接电脑，从PC端发送指令。<br>
+        后来了解到手机端有人用JavaScript语言做了个Auto.js的脚本程序，之后就学习着使用JavaScript编写手机上的签到脚本。<br>
+      <p><%= link_to 'GitHub', 'https://github.com/clousky2020/auto.js-', target: '_blank', class: 'btn btn-primary' %></p>
+      </p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="title">
+      <h1> 2018年8月 </h1>
+      <h2>工作中学习Vba</h2>
+    </div>
+    <div class="description">
+      <p>
+        换了工作，用到Excel表记录，工厂的生产内容涉及到一些快速运算，有了性能上的要求。<br>
+        在工作之余，再学习了VBA的编写，抛弃了Excel在大数据下慢的要死的自动计算功能，改为实时局部vba算法。<br>
+        之前有看到过二分法的理论，最终也尝试着写了出来，原来需要60~90秒的计算动作，现在能在保持在5~10秒内了。<br>
+      </p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="title">
+      <h1> 2016年6月 </h1>
+      <h2>初学Python</h2>
+    </div>
+    <div class="description">
+      <p>
+        因为一个kindle推书的公众号解散了，就想着自己去做。<br>
+        接触了Python，学习了两个多月后，写了个爬虫+整合mobi+发送到Amazon邮箱的小程序.<br>
+        这个程序是自学生时代后第一次完成的实用项目。<br>
+        之后也一直实用Python做一些工作上所需的小工具。
+      </p>
+    </div>
+  </div>
+</div>
+
+
+</body>
 
