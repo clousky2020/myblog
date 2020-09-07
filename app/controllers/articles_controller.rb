@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :find_article, only: [:show]
   before_action :all_comments, only: [:index]
+  before_action :all_categories
+
 
   def index
     @articles = Article.searched(params[:search]).order("created_at DESC").page params[:page]
@@ -20,6 +22,10 @@ class ArticlesController < ApplicationController
 
   def all_comments
     @comments = Comment.order("updated_at DESC")
+  end
+
+  def all_categories
+    @categories = Category.all
   end
 
   def find_article

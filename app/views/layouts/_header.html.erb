@@ -4,15 +4,25 @@
 
   <ul class="nav ml-auto">
     <li>
+      <div class="dropdown">
+        <button class="btn dorpdown-toggle" data-toggle="dropdown">分类</button>
+        <div class="dropdown-menu">
+          <% @categories.each do |f| %>
+            <a class="dropdown-item"><%= f.name%></a>
+          <% end %>
+        </div>
+      </div>
+    </li>
+    <li>
       <%= form_tag "/", method: "get", class: "form-inline" do %>
         <span><%= text_field_tag "search", nil, class: "form-control mr-sm-2", placeholder: "标题和内容搜索" %></span>
         <span><%= submit_tag "搜索", class: "btn btn-outline-success my-2 my-sm-0" %></span>
       <% end %>
     </li>
-    <li class="nav-item"><%= link_to "文章列表", articles_url %></li>
-    <li class="nav-item"><%= link_to "关于博主", about_path %></li>
+    <li class="nav-item"><%= link_to "博客文章", articles_url %></li>
+    <li class="nav-item"><%= link_to "关于我", about_path %></li>
     <% if session[:login] == true %>
-      <li class="nav-item"><%= link_to "进入后台", admin_root_path %></li>
+      <li class="nav-item"><%= link_to "管理", admin_root_path %></li>
       <li class="nav-item"><%= link_to "退出", admin_logout_path %>
     <% else %>
       <li class="nav-item"><%= link_to "登录", new_admin_session_path %></li>
