@@ -20,7 +20,7 @@ import 'bootstrap'
 
 $(document).ready(function () {
     //分类筛选
-    $(".category-item ").click(function () {
+    $(document).on('click',".category-item",function () {
         var ele = $(this).text();
         $.post('/search',
             {category: ele}
@@ -30,7 +30,7 @@ $(document).ready(function () {
         }
     });
     //右边的标签点击
-    $(".tag_item").click(function () {
+    $(document).on('click',".tag_item",function () {
         var ele = $(this).text();
         $.post('/search',
             {label: ele}
