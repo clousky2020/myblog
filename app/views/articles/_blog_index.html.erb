@@ -1,0 +1,30 @@
+<div id="blog_index">
+  <% if articles.length == 0 %>
+    <div class="small-12 large-8 columns">
+      <p>
+        没有找到博文。
+      </p>
+    </div>
+  <% else %>
+    <div>
+      <% articles.each do |article| %>
+        <div id="blog_info" class="small-12 large-8 columns">
+          <h4 class="blog-title"><%= link_to article.title, article_path(article) %></h4>
+          <p class="blog_ptag pre">
+            <% if article.categories.any? %>
+              <span>分类:<%= article.categories.first.name %></span>
+            <% end %>
+            <span>发文时间:<%= article.created_at.strftime('%Y-%m-%d') %></span>
+            <span>
+                <%= fa_icon "tag" %>
+              <%= article.labels.map {|i| i.name}.join(",") %>
+              </span>
+          </p>
+          <p class="blog_content"><%= truncate(article.content, escape: false, :length => 50) %></p>
+          <hr>
+        </div>
+      <% end %>
+    </div>
+    <div class="pagination"><%= paginate articles %></div>
+  <% end %>
+</div>

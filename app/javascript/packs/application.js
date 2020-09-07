@@ -29,7 +29,7 @@ $(document).ready(function () {
         {
             console.log(data);
         }
-    })
+    });
     //右边的标签点击
     $(".tag_item").click(function () {
         var ele = $(this).text();
@@ -39,5 +39,15 @@ $(document).ready(function () {
         {
             console.log(data);
         }
-    })
+    });
+
+    // 点击目录页面上的文字，滚动到相应的位置
+    $("#catalog li").click(function () {
+        var ele_name = $(this).text();
+        $("html, body").animate({scrollTop: $("#" + ele_name).offset().top - 110}, {
+            duration: 300,
+            easing: "swing"
+        });
+    });
+
 })

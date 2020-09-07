@@ -2,23 +2,23 @@
 <% provide(:bg, 'show-bg') %>
 
 <div class="row">
-  <div class="col-sm-12 col-md-9 col-lg-9">
+  <div class="col-sm-12 col-md-10 col-lg-10">
     <div class="article_content">
       <h3><%= @article.title %></h3>
       <table class="table">
         <tr>
           <% if @article.categories.any? %>
-            <td class="item " >分类:<%= @article.categories.first.name %></td>
+            <td class="item ">分类:<%= @article.categories.first.name %></td>
           <% end %>
           <td class="item"><%= @article.created_at.to_formatted_s(:db) %></td>
           <td class="item">
-            <%=fa_icon "tag" %>
+            <%= fa_icon "tag" %>
             <%= @article.labels.map {|i| i.name}.join(",") %></td>
           <td class="item">
-            <%=fa_icon "eye" %>
+            <%= fa_icon "eye" %>
             <%= @article.views %></td>
           <td class="item">
-            <%=fa_icon "comment" %>
+            <%= fa_icon "comment" %>
             <%= @article.comments.length %></td>
         </tr>
       </table>
@@ -38,17 +38,14 @@
         </div>
         <%= render 'shard/error_messages', object: f.object %>
       <% end %>
-
       <div id="comments_content">
         <%= render "article_comments", article: @article %>
       </div>
     </div>
   </div>
   <div class="col-lg-2 col-md-2 col-sm-12 ">
-    <div id="recommend_reading" >
-
+    <div id="recommend_reading">
     </div>
-
     <% if @catalog.any? %>
       <div id="catalog">
         <h2>目录</h2>
@@ -59,15 +56,3 @@
     <% end %>
   </div>
 </div>
-<script>
-    // 点击目录页面上的文字，滚动到相应的位置
-    $(document).ready(function () {
-        $("#catalog li").click(function () {
-            var ele_name = $(this).text();
-            $("html, body").animate({scrollTop: $("#" + ele_name).offset().top - 110}, {
-                duration: 500,
-                easing: "swing"
-            });
-        });
-    });
-</script>
