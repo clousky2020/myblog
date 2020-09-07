@@ -19,9 +19,8 @@ import 'bootstrap'
 
 
 $(document).ready(function () {
-
-    //导航栏上的分类筛选
-    $(".dropdown-item ").click(function () {
+    //分类筛选
+    $(".category-item ").click(function () {
         var ele = $(this).text();
         $.post('/search',
             {category: ele}
@@ -40,14 +39,13 @@ $(document).ready(function () {
             console.log(data);
         }
     });
-
     // 点击目录页面上的文字，滚动到相应的位置
-    $("#catalog li").click(function () {
+    $(document).on('click', '#catalog li', function () {
         var ele_name = $(this).text();
         $("html, body").animate({scrollTop: $("#" + ele_name).offset().top - 110}, {
-            duration: 300,
+            duration: 500,
             easing: "swing"
         });
     });
-
 })
+

@@ -100,8 +100,15 @@ a.weixin {
   opacity: 1;
 }
 
-//导航栏下拉菜单选项
-.dropdown-item:hover {
+//分类
+.category-item {
+  color: cornflowerblue;
+  margin: 0 5px;
+  word-wrap:break-word;
+
+}
+
+.category-item:hover {
   cursor: pointer;
 }
 
@@ -118,13 +125,12 @@ a.weixin {
 //右边标签栏
 #tag_list {
   margin-top: auto;
+  word-wrap: break-word;
 }
-
+//标签
 .tag_item {
-  margin-left: 10px;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: lightgray;
+  color: cornflowerblue;
+
 }
 
 .tag_item:hover {
@@ -149,7 +155,6 @@ a.weixin {
 
 #right_info {
   //position: fixed;
-
 }
 
 #right_comments {

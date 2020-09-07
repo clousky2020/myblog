@@ -4,10 +4,12 @@
       如果你想要让一个人很不快乐，就鼓励他多去看自己得不到的。</h3>
   </div>
 </header>
-<div class="row">
-  <div class=" font-family col-sm-auto col-md-8 col-lg-8" id="admin_index_content">
-    <%= render 'blog_index', articles: @articles %>
+<div class="container">
+  <div class=" row">
+    <div class=" font-family col-sm-auto col-md-8 col-lg-8" id="admin_index_content">
+      <%= render 'blog_index', articles: @articles %>
+    </div>
+    <%= render "shard/right_info", comments: @comments %>
   </div>
-  <%= render "shard/right_info", comments: @comments %>
 </div>
 

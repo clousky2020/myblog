@@ -36,11 +36,11 @@ class ArticlesController < ApplicationController
   end
 
   def all_categories
-    @categories = Category.all
+    @categories = Category.joins(:articles).collect {|a| a.name}.uniq
   end
 
   def all_labels
-    @labels = Label.all
+    @labels = Label.joins(:articles).collect {|a| a.name}.uniq
   end
 
   def find_article

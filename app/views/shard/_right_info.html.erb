@@ -10,23 +10,20 @@
       <% end %>
 
       <hr>
-      <div class="dropdown">
-        <button class="btn dorpdown-toggle" data-toggle="dropdown">分类筛选</button>
-        <div class="dropdown-menu">
+      <div id="categories">
+        <h3>分类筛选</h3>
+        <div class="row">
           <% @categories.each do |f| %>
-            <a class="dropdown-item"><%= f.name %></a>
+            <div class="category-item col-5"><%= f %></div>
           <% end %>
         </div>
       </div>
       <hr>
-
-      <div id="tag_list">
-        <h3>目前已有的标签</h3>
+      <div id="tag_list col-12">
+        <h3>标签筛选</h3>
         <div class="row">
           <% @labels.each do |f| %>
-            <div class="tag_item">
-              <%= f.name %>
-            </div>
+            <div class="tag_item col-4"><%= f %></div>
           <% end %>
         </div>
       </div>
