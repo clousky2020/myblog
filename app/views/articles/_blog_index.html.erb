@@ -9,7 +9,7 @@
     <div>
       <% articles.each do |article| %>
         <div id="blog_info" class="small-12 large-8 columns">
-          <h4 class="blog-title"><%= link_to article.title, article_path(article) %></h4>
+          <h1 class="blog-title"><%= link_to article.title, article_path(article) %></h1>
           <p class="blog_ptag pre">
             <% if article.categories.any? %>
               <span>分类:<%= article.categories.first.name %></span>
