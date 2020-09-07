@@ -1,33 +1,46 @@
 <div id="right_info" class="col-sm-12 col-md-4 col-lg-4 ">
-  <div id="right_comments">
-    <div class="right_side">
-      <h3>最新的评论</h3>
-      <% comments.each do |comment| %>
-        <div class="comments_content">
-          <%= truncate comment.content, length: 20 %><br>
-          --- <%= link_to comment.article.title, article_path(comment.article) %>
-        </div>
-      <% end %>
 
-      <hr>
-      <div id="categories">
-        <h3>分类筛选</h3>
-        <div class="row">
-          <% @categories.each do |f| %>
-            <div class="category-item "><%= f %></div>
-          <% end %>
-        </div>
+  <div id="right_comments">
+    <h3>最新的评论</h3>
+    <% comments.each do |comment| %>
+      <div class="comments_content">
+        <%= truncate comment.content, length: 20 %><br>
+        --- <%= link_to comment.article.title, article_path(comment.article) %>
       </div>
-      <hr>
-      <div id="tag_list col-12">
-        <h3>标签筛选</h3>
-        <div class="row">
-          <% @labels.each do |f| %>
-            <span class="tag_item "><%= f %></span>
-          <% end %>
-        </div>
-      </div>
+    <% end %>
+  </div>
+
+  <hr>
+  <div id="categories">
+    <h3>分类筛选</h3>
+    <div class="row">
+      <% @categories.each do |f| %>
+        <div class="category-item "><%= f %></div>
+      <% end %>
     </div>
   </div>
+  <hr>
+
+  <div id="tag_list ">
+    <h3>标签筛选</h3>
+    <div class="row">
+      <% @labels.each do |f| %>
+        <span class="tag_item "><%= f %></span>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+
+  <!--      <div id="popular_articles col-12">-->
+  <!--        <h3>最受欢迎的文章</h3>-->
+  <!--        <div class="row">-->
+  <%# @labels.each do |f| %>
+  <!--            <span class="tag_item "><%#= f %></span>-->
+  <%# end %>
+  <!--        </div>-->
+  <!--      </div>-->
+
+
 </div>
+
 
