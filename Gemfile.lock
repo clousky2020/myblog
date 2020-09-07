@@ -80,6 +80,8 @@ GEM
       capistrano (~> 3.1)
     capistrano-faster-assets (1.0.2)
       capistrano (>= 3.1)
+    capistrano-local-precompile (1.2.0)
+      capistrano (>= 3.8)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
     capistrano-rails (1.6.1)
@@ -280,6 +282,7 @@ DEPENDENCIES
   capistrano
   capistrano-bundler
   capistrano-faster-assets (~> 1.0.2)
+  capistrano-local-precompile
   capistrano-passenger
   capistrano-rails
   capistrano-rbenv
