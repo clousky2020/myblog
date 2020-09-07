@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   get "/about", to: "articles#about"
+  post "/search", to: "articles#search"
 
   namespace :admin do
     resources :articles, except: [:show] do

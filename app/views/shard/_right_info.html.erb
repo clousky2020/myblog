@@ -8,11 +8,18 @@
           --- <%= link_to comment.article.title, article_path(comment.article) %>
         </div>
       <% end %>
+      <hr>
       <div id="tag_list">
-
+        <h3>目前已有的标签</h3>
+        <div class="row">
+          <% @labels.each do |f| %>
+            <div class="tag_item">
+              <%= f.name %>
+            </div>
+          <% end %>
+        </div>
       </div>
-
-
     </div>
   </div>
 </div>
+

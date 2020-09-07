@@ -17,3 +17,27 @@ import 'bootstrap'
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+
+$(document).ready(function () {
+
+    //导航栏上的分类筛选
+    $(".dropdown-item ").click(function () {
+        var ele = $(this).text();
+        $.post('/search',
+            {category: ele}
+        ).function(data.status)
+        {
+            console.log(data);
+        }
+    })
+    //右边的标签点击
+    $(".tag_item").click(function () {
+        var ele = $(this).text();
+        $.post('/search',
+            {label: ele}
+        ).function(data.status)
+        {
+            console.log(data);
+        }
+    })
+})

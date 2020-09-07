@@ -70,6 +70,7 @@ body {
     text-decoration: underline;
   }
 }
+
 //鼠标悬停，出现二维码
 a.weixin {
   position: relative;
@@ -84,7 +85,7 @@ a.weixin {
   max-width: none;
   height: 7.5rem;
   transform: scale(0);
-  transform-origin: top ;
+  transform-origin: top;
   opacity: 0;
   border: .3125rem solid #0085ba;
   border-radius: .25rem;
@@ -96,4 +97,38 @@ a.weixin {
 .weixin:hover img.qrcode {
   transform: scale(1);
   opacity: 1;
+}
+
+//导航栏下拉菜单选项
+.dropdown-item:hover {
+  cursor: pointer;
+}
+
+.dropdown {
+  margin-right: 10px;
+}
+
+//右侧目录框
+#comments_content {
+  border-radius: 5px;
+  background-color: white;
+}
+
+//右边标签栏
+#tag_list {
+  margin-top: auto;
+}
+
+.tag_item {
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid greenyellow;
+  background-color: yellowgreen;
+
+
+}
+
+.tag_item:hover {
+  cursor: pointer;
 }
