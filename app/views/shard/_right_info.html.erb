@@ -29,14 +29,14 @@
 </div>
 <hr>
 
-<!--      <div id="popular_articles col-12">-->
-<!--        <h3>最受欢迎的文章</h3>-->
-<!--        <div class="row">-->
-<%# @labels.each do |f| %>
-<!--            <span class="tag_item "><%#= f %></span>-->
-<%# end %>
-<!--        </div>-->
-<!--      </div>-->
+<div id="popular_articles col-12">
+  <h3>最受欢迎的文章</h3>
+  <div class="row">
+    <% @popular_articles.each do |f| %>
+      <span class="tag_item "><%= link_to f.title,article_path(f) %></span>
+    <% end %>
+  </div>
+</div>
 
 
 

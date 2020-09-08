@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.order("created_at DESC").page params[:page]
+    @popular_articles=Article.order("views DESC").first(5)
   end
 
   def show
