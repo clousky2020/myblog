@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
   private
 
   def all_comments
-    @comments = Comment.order("updated_at DESC")
+    @comments = Comment.order("updated_at DESC").first(5)
   end
 
   def all_categories
