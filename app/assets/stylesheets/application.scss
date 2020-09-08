@@ -58,12 +58,17 @@ body {
 }
 
 //文章右侧目录栏
+#catalog_header {
+
+}
+
 #catalog {
+  //display: inline-block;
   position: fixed;
-  top: 10%;
-  right: 5%;
-  height: 80%;
-  width: 250px;
+  top: 70px;
+  right: 0;
+  max-height: 80%;
+  max-width: 20%;
   background-color: white;
   border-radius: 5px;
   overflow-y: scroll;
@@ -119,6 +124,7 @@ a.weixin {
 .dropdown {
   margin-right: 10px;
 }
+
 //右侧导航栏
 //#right_info{
 //  position: fixed;
