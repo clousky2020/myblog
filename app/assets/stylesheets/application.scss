@@ -62,8 +62,11 @@ body {
   position: fixed;
   top: 10%;
   right: 5%;
+  height: 80%;
+  width: 250px;
   background-color: white;
   border-radius: 5px;
+  overflow-y: scroll;
 
   li:hover {
     color: blue;
@@ -105,7 +108,7 @@ a.weixin {
   color: cornflowerblue;
   margin-left: 15px;
   margin-right: 5px;
-  word-wrap:break-word;
+  word-wrap: break-word;
 
 }
 
@@ -116,7 +119,14 @@ a.weixin {
 .dropdown {
   margin-right: 10px;
 }
-
+//右侧导航栏
+//#right_info{
+//  position: fixed;
+//  height: 80%;
+//  width: auto;
+//  right: 10%;
+//  top: 10%;
+//}
 //右侧目录框
 #comments_content {
   border-radius: 5px;
@@ -128,6 +138,7 @@ a.weixin {
   margin-top: auto;
   word-wrap: break-word;
 }
+
 //标签
 .tag_item {
   color: cornflowerblue;

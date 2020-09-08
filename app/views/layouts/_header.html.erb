@@ -3,17 +3,6 @@
   <%= link_to "clousky's blog", root_url, class: "navbar-brand mr-auto nav-item" %>
 
   <ul class="nav ml-auto">
-<!--    <li>-->
-      <!--      <div id="dropdown">-->
-      <!--        <button class="btn dorpdown-toggle" data-toggle="dropdown">分类筛选</button>-->
-      <!--        <div class="dropdown-menu">-->
-      <%# @categories.each do |f| %>
-      <!--            <a class="dropdown-item"><%#= f.name %></a>-->
-      <%# end %>
-      <!--        </div>-->
-      <!--      </div>-->
-      <!--      <hr>-->
-<!--    </li>-->
     <li>
       <%= form_tag search_path, class: "form-inline", remote: true do %>
         <span><%= text_field_tag "search", nil, class: "form-control mr-sm-2", placeholder: "标题和内容搜索" %></span>
@@ -25,13 +14,6 @@
     <% if session[:login] == true %>
       <li class="nav-item"><%= link_to "管理", admin_root_path %></li>
       <li class="nav-item"><%= link_to "退出", admin_logout_path %>
-    <%# else %>
-<!--      <li class="nav-item"><%#= link_to "登录", new_admin_session_path %></li>-->
     <% end %>
   </ul>
 </nav>
-
-<script>
-
-
-</script>
