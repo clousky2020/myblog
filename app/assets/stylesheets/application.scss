@@ -58,8 +58,9 @@ body {
 }
 
 //文章右侧目录栏
-#catalog_header {
-
+#filter-tags {
+  position: sticky;
+  top: 10%;
 }
 
 #catalog {

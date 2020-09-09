@@ -1,24 +1,3 @@
-<hr>
-<div id="categories">
-  <h3>分类筛选</h3>
-  <div class="row">
-    <% @categories.each do |f| %>
-      <div class="category-item "><%= f %></div>
-    <% end %>
-  </div>
-</div>
-<hr>
-
-<div id="tag_list ">
-  <h3>标签筛选</h3>
-  <div class="row">
-    <% @labels.each do |f| %>
-      <span class="tag_item "><%= f %></span>
-    <% end %>
-  </div>
-</div>
-<hr>
-
 <div id="popular_articles col-12">
   <h3>观看量最高的文章</h3>
   <div class="row">
@@ -41,5 +20,27 @@
   <% end %>
 </div>
 
+<div id="filter-tags">
+  <div id="categories">
+    <h3>分类筛选</h3>
+    <div class="row">
+      <% @categories.each do |f| %>
+        <div class="category-item "><%= f %></div>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+
+  <div id="tag_list ">
+    <h3>标签筛选</h3>
+    <div class="row">
+      <% @labels.each do |f| %>
+        <span class="tag_item "><%= f %></span>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+
+</div>
 
 
