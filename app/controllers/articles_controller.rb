@@ -6,8 +6,8 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = Article.order("created_at DESC").page params[:page]
-    @popular_articles=Article.order("views DESC").first(5)
+    @articles = Article.order("updated_at DESC").page params[:page]
+    @popular_articles = Article.order("views DESC").first(5)
   end
 
   def show
@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
       @articles = Label.find_by(name: params[:label].strip).articles.order("created_at DESC").page params[:page]
     end
     render 'articles/refresh_index'
+
   end
 
   private

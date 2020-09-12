@@ -9,12 +9,12 @@
     <div>
       <% articles.each do |article| %>
         <div id="blog_info" class="small-12 large-8 columns">
-          <h1 class="blog-title"><%= link_to article.title, article_path(article) %></h1>
+          <h2 class="blog-title"><%= link_to article.title, article_path(article) %></h2>
           <p class="blog_ptag pre">
             <% if article.categories.any? %>
               <span>分类:<%= article.categories.first.name %></span>
             <% end %>
-            <span>发文时间:<%= article.created_at.strftime('%Y-%m-%d') %></span>
+            <span><%= article.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></span>
             <span>
                 <%= fa_icon "tag" %>
               <%= article.labels.map {|i| i.name}.join(",") %>
