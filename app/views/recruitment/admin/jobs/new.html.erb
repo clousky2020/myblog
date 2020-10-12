@@ -1,0 +1,5 @@
+<% provide(:button_text, "新建") %>
+<h1>新的招聘信息</h1>
+
+<%= render partial: 'recruitment/admin/jobs/form', locals: {:zone => @job, :url => recruitment_admin_jobs_path} %>
+

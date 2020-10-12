@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="main_info col-md-8 col-xs-12">
+
+    <div class="job_title row">
+      <div class=" mr-auto">
+        <h2><%= job.name %></h2>
+        <span class="salary"><%= job.salary_down_limit %>~<%= job.salary_up_limit %>元/月</span>
+      </div>
+      <% if @current_user %>
+        <div class="ml-auto">
+          <%= link_to "投递简历", send_resume_recruitment_admin_user_resume_path(job), remote: true, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <div class="job_detail">
+      <div class="row">
+        <div class="col-6">
+          <span><%= fa_icon "sitemap" %>招聘部门:<%= job.recruitment_department %></span>
+        </div>
+        <div class="col-6">
+          <span><%= fa_icon "users" %>招聘人数:<%= job.hiring_number %>人</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <% if job.work_age != 0 %>
+            <span><%= fa_icon "briefcase" %>工作经验:<%= job.work_age %>年以上</span>
+          <% else %>
+            <span><%= fa_icon "briefcase" %>工作经验:不限</span>
+          <% end %>
+        </div>
+        <div class="col-6">
+          <span><%= fa_icon "venus-mars" %>性别要求:<%= job.gender %></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <span><%= fa_icon "user-o" %>年龄要求:<%= job.min_age %>岁~<%= job.max_age %>岁</span>
+        </div>
+        <div class="col-6">
+          <% if job.language_requirement %>
+            <span><%= fa_icon "language" %>语言要求:<%= job.language_requirement %></span>
+          <% else %>
+            <span><%= fa_icon "language" %>语言要求:不限</span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <span><%= fa_icon "map-marker" %>工作地区:<%= job.work_area %></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <span><%= fa_icon "map-marker" %>详细地址:<%= job.detailed_address %></span>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="job_favorite_share_clearfix">
+      <div class="mr-auto">
+      <span>
+        <%= fa_icon "clock-o" %>
+        <%= job.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>
+      </span>
+        <span>
+          <%= fa_icon "eye" %>
+          <%= job.views %>
+        </span>
+      </div>
+    </div>
+    <div class="job_publich">
+      <div class="title">
+        <h3>职位发布者</h3>
+      </div>
+      <div class="box">
+        <div class="row">
+
+          <div class="col-4">
+            <div class="contact"><%= fa_icon "user" %>联系人:<%= job.recruitment_company.company_recruiter_name %></div>
+          </div>
+          <div class="col-4">
+            <div class="contact"><%= fa_icon "phone" %>联系电话:<%= job.recruitment_company.recruiter_phone %></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="job_description">
+      <h3>职位描述</h3>
+      <p><%= job.description %></p>
+    </div>
+
+  </div>
+
+
+</div>

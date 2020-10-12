@@ -1,5 +1,5 @@
 class Admin::CategorysController < ApplicationController
-  layout 'layouts/admin'
+  layout "admin/layouts/admin"
 
   def index
     @categorys = Category.all

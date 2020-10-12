@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>注册新用户</h1>
+  <%= form_for(:user, url: recruitment_register_index_path) do |f| %>
+    <div class="field">
+      <%= f.label :name, "用户名" %><br/>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+    <div class="field">
+      <%= f.label :email, "邮箱" %><br/>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, "密码" %><br/>
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation, "确认密码" %><br/>
+      <%= f.password_field :password_confirmation, autocomplete: "current-password" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "注册" %>
+    </div>
+
+  <% end %>
+
+</div>

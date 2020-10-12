@@ -10,19 +10,12 @@
 </head>
 
 <body>
-<%= render "layouts/admin_header" %>
-
-<div class="flash_info">
-  <% flash.each do |type, msg| %>
-    <div>
-      <%= msg %>
-    </div>
-  <% end %>
-</div>
-
+<%= render "admin/layouts/admin_header" %>
+<%= render "shard/flashes" %>
 <div class="container">
   <%= yield %>
 </div>
 
+<%= render "layouts/footer" %>
 </body>
 </html>

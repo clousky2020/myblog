@@ -1,19 +1,18 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top justify-content-center">
-
-  <%= link_to "clousky's blog", root_url, class: "navbar-brand mr-auto nav-item" %>
-
-  <ul class="nav ml-auto">
-    <li>
-      <%= form_tag search_path, class: "form-inline", remote: true do %>
-        <span><%= text_field_tag "search", nil, class: "form-control mr-sm-2", placeholder: "标题和内容搜索" %></span>
-        <span><%= submit_tag "搜索", class: "btn btn-outline-success my-2 my-sm-0" %></span>
-      <% end %>
-    </li>
-    <li class="nav-item"><%= link_to "博客文章", articles_url %></li>
-    <li class="nav-item"><%= link_to "关于我", about_path %></li>
+  <div class="mr-auto">
+    <%= link_to "clousky's blog", root_url, class: "navbar-brand  nav-item" %>
+    <%= link_to "招聘网站demo", recruitment_jobs_url %>
+  </div>
+  <ul class="nav  ml-auto">
+    <%= form_tag search_path, class: "form-inline", remote: true do %>
+      <%= text_field_tag "search", nil, class: "form-control mr-sm-2", placeholder: "标题和内容搜索" %>
+      <%= submit_tag "搜索", class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
+    <%= link_to "博客文章", articles_url, class: "nav-item" %>
+    <%= link_to "关于我", about_path, class: "nav-item" %>
     <% if session[:login] == true %>
-      <li class="nav-item"><%= link_to "管理", admin_root_path %></li>
-      <li class="nav-item"><%= link_to "退出", admin_logout_path %>
+      <%= link_to "管理", admin_root_path, class: "nav-item" %>
+      <%= link_to "退出", admin_logout_path, class: "nav-item" %>
     <% end %>
   </ul>
 </nav>

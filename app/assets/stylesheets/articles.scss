@@ -33,7 +33,7 @@
 }
 
 //主页首要内容
-header.masthead {
+.masthead {
   margin: 0;
   position: relative;
 
@@ -45,14 +45,14 @@ header.masthead {
 }
 
 //主页的背景图
-header.home-background-1 {
+.home-background-1 {
   height: 100%;
   background-image: image_url('index-bg-1.jpg');
   background-size: cover;
   color: greenyellow;
 }
 
-header.home-background-2 {
+.home-background-2 {
   height: 100%;
   background-image: image_url('index-bg-2.jpg');
   background-size: cover;

@@ -1,4 +1,7 @@
 module ApplicationHelper
+  # helper_method :resource_name, :resource, :devise_mapping, :resource_class
+
+
   def full_title(page_title = "")
     base_title = "clousky's blog"
     if page_title.empty?
@@ -13,4 +16,5 @@ module ApplicationHelper
     cookies[:urlback] = request.original_url
     # session[:forwarding_url] = request.original_url if request.get?
   end
+
 end

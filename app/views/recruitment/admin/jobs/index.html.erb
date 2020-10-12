@@ -1,0 +1,30 @@
+<h1>招聘内容管理</h1>
+<%= link_to "新建招聘信息", new_recruitment_admin_job_path %>
+<table class="table table-hover table-active">
+  <thead>
+  <tr>
+    <td>标题</td>
+    <td>已有简历数量</td>
+    <td>隐藏/显示</td>
+    <td>操作</td>
+    <td>操作</td>
+    <td>操作</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.name %></td>
+      <td><%= job.recruitment_resumes.count %></td>
+      <% if job.show %>
+        <td><%= link_to fa_icon("eye-slash"), push_recruitment_admin_job_path(job) %></td>
+      <% else %>
+        <td><%= link_to fa_icon("eye"), push_recruitment_admin_job_path(job) %></td>
+      <% end %>
+      <td><%= link_to "查看", recruitment_admin_job_path(job) %></td>
+      <td><%= link_to "编辑", edit_recruitment_admin_job_path(job) %></td>
+      <td><%= link_to "删除", recruitment_admin_job_path(job), method: :delete, data: {confirm: "确定删除？"} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

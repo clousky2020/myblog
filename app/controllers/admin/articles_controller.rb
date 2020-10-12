@@ -1,8 +1,8 @@
 class Admin::ArticlesController < ApplicationController
   before_action :find_article, only: [:edit, :update, :destroy]
   before_action :all_comments, only: [:edit, :index, :new]
-  before_action :authenticate_user
-  layout "layouts/admin"
+  before_action :authenticate_login
+  layout "admin/layouts/admin"
 
   def index
     @articles = Article.searched(params[:search]).order("created_at DESC").page params[:page]
@@ -25,7 +25,7 @@ class Admin::ArticlesController < ApplicationController
       flash[:notice] = "创建成功"
       redirect_to admin_articles_url
     else
-      flash.now[:error] = "创建失败"
+      flash.now[:alert] = "创建失败"
       render "new"
     end
   end
@@ -40,7 +40,7 @@ class Admin::ArticlesController < ApplicationController
       flash[:notice] = "成功更新"
       redirect_to admin_articles_url
     else
-      flash.now[:error] = "更新失败"
+      flash.now[:alert] = "更新失败"
       render 'edit'
     end
 
@@ -48,10 +48,10 @@ class Admin::ArticlesController < ApplicationController
 
   def destroy
     if @article.destroy and @article.categories.clear
-      flash[:success] = "文章删除成功"
+      flash[:notice] = "文章删除成功"
       redirect_to admin_articles_url
     else
-      flash[:error] = "文章删除失败，原因是#{@article.errors.full_messages.to_s}"
+      flash[:alert] = "文章删除失败，原因是#{@article.errors.full_messages.to_s}"
       render "index"
     end
   end

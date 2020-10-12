@@ -1,6 +1,6 @@
 class Admin::CommentsController < ApplicationController
-  layout 'layouts/admin'
-  before_action :authenticate_user
+  layout "admin/layouts/admin"
+  before_action :authenticate_login
 
   before_action do
     @article = Article.find(params[:article_id])

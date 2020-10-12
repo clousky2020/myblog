@@ -1,15 +1,18 @@
-<header class="masthead home-background-<%= [*1, 2].sample %>">
+
+
+<div class="masthead home-background-<%= [*1, 2].sample %>">
   <div id="sign" class="justify-content-center">
     <h3>如果你想要快乐，就多看自己拥有的。<br>
       如果你想要让一个人很不快乐，就鼓励他多去看自己得不到的。</h3>
   </div>
-</header>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class=" font-family col-sm-auto col-md-8 col-lg-8" id="admin_index_content">
+    <div class=" font-family col-sm-auto col-xs-8 col-md-8" id="admin_index_content">
       <%= render 'blog_index', articles: @articles %>
     </div>
-    <div id="right-info" class="col-sm-auto col-md-3 offset-md-1 col-lg-3 offset-lg-1">
+    <div id="right-info" class="col-sm-auto col-xs-3 offset-xs-1 col-md-3 offset-md-1">
       <%= render "shard/right_info" %>
     </div>
   </div>

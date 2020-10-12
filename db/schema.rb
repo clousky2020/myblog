@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_005939) do
+ActiveRecord::Schema.define(version: 2020_10_10_090904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,107 @@ ActiveRecord::Schema.define(version: 2020_09_03_005939) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recruitment_companies", force: :cascade do |t|
+    t.string "company_name"
+    t.string "company_email"
+    t.string "password_digest"
+    t.string "company_recruiter_name"
+    t.string "recruiter_phone"
+    t.string "company_phone"
+    t.string "company_address"
+    t.string "company_logo"
+    t.string "company_size"
+    t.string "company_type"
+    t.integer "company_date_of_establishment"
+    t.boolean "company_introduction", default: false
+    t.string "is_certificate"
+    t.boolean "is_admin", default: false
+    t.datetime "last_login_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_email"], name: "index_recruitment_companies_on_company_email"
+    t.index ["company_name"], name: "index_recruitment_companies_on_company_name"
+  end
+
+  create_table "recruitment_jobs", force: :cascade do |t|
+    t.bigint "company_id"
+    t.string "name"
+    t.text "description"
+    t.string "work_type"
+    t.integer "work_age"
+    t.integer "salary_up_limit", default: 0
+    t.integer "salary_down_limit", default: 0
+    t.string "work_area"
+    t.string "detailed_address"
+    t.boolean "show", default: false
+    t.integer "views", default: 0
+    t.integer "hiring_number", default: 1
+    t.integer "min_age", default: 18
+    t.integer "max_age", default: 70
+    t.string "language_requirement"
+    t.string "gender"
+    t.string "recruitment_department"
+    t.string "education"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_recruitment_jobs_on_company_id"
+  end
+
+  create_table "recruitment_jobs_resumes", id: false, force: :cascade do |t|
+    t.bigint "recruitment_job_id"
+    t.bigint "recruitment_resume_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recruitment_job_id"], name: "index_recruitment_jobs_resumes_on_recruitment_job_id"
+    t.index ["recruitment_resume_id"], name: "index_recruitment_jobs_resumes_on_recruitment_resume_id"
+  end
+
+  create_table "recruitment_resumes", force: :cascade do |t|
+    t.boolean "is_default", default: false
+    t.integer "user_id"
+    t.string "name"
+    t.string "gender"
+    t.integer "age"
+    t.date "birth"
+    t.integer "work_age"
+    t.string "education"
+    t.string "picture"
+    t.string "residential_address"
+    t.string "job_seeking_status"
+    t.string "marrige_status"
+    t.string "household_register"
+    t.string "live_address_1"
+    t.string "live_address_2"
+    t.string "phone"
+    t.integer "to_work_time"
+    t.string "intention_job"
+    t.string "job_category"
+    t.string "expect_salary"
+    t.string "expect_work_site"
+    t.string "work_experience"
+    t.string "self_assessment"
+    t.string "education_and_training_experience"
+    t.string "project_experience"
+    t.string "language_abiity"
+    t.string "skill_speciality"
+    t.string "certificate"
+    t.string "other_info"
+    t.string "my_production"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "is_default"], name: "index_recruitment_resumes_on_user_id_and_is_default", unique: true
+  end
+
+  create_table "recruitment_users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "last_login_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_recruitment_users_on_email"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -1,0 +1,2 @@
+module Recruitment::CompanysessionsHelper
+end

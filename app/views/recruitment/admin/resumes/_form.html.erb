@@ -1,0 +1,172 @@
+<div class="resumes_body col-md-10 offset-md-2" id="resumes_body">
+
+  <div class="edit_user_info d-none " id="edit_user_info">
+    <div class="iTitle">
+      <h3>基本资料</h3>
+    </div>
+    <%= form_for(@resume, url: recruitment_admin_user_resume_path(@user), method: :put, remote: true) do |f| %>
+      <dl class="row">
+        <dt class="col-2"><%= f.label :name, "姓名", class: "caption" %><span class="asterisk">*</span></dt>
+        <dd class="col-10"><%= f.text_field :name %></dd>
+      </dl>
+
+      <dl class="row">
+        <dt class="col-2"><%= f.label :gender, "性别", class: "caption " %><span class="asterisk">*</span></dt>
+        <dd class="col-1"><%= f.radio_button(:gender, "男") %><%= f.label :gender, "男" %></dd>
+        <dd class="col-1"><%= f.radio_button(:gender, "女") %><%= f.label :gender, "女" %></dd>
+      </dl>
+
+      <dl class="row">
+        <dt class="col-2"><%= f.label :birth, "出生日期", class: "caption " %><span class="asterisk">*</span></dt>
+        <dd class="col-2"><%= f.date_field :birth %></dd>
+      </dl>
+
+      <dl class="row">
+        <dt class="col-2"><%= f.label :work_age, "工作经验", class: "caption " %><span class="asterisk">*</span></dt>
+        <dd class="col-2"><%= f.select(:work_age, options_for_select([['无经验', 0], ['1年以内', 1], ['2年', 2], ['3年', 3], ['4年', 4],
+                                                                      ['5年', 5], ['6年', 6], ['7年', 7], ['8年', 8], ['9年', 9],
+                                                                      ['10年以上', 10]], @resume.work_age)) %></dd>
+      </dl>
+      <dl class="row">
+        <dt class="col-2"><%= f.label :household_register, "户籍", class: "caption" %></dt>
+        <dd class="col-2"><%= f.text_field :household_register %></dd>
+      </dl>
+      <dl class="row city-group">
+        <dt class="col-2"><%= f.label :live_address_1, "现居地", class: "caption" %></dt>
+        <dd class="col-10">
+          <div class="city-group">
+            <select class="city-select">
+              <option>--省份--</option>
+            </select>
+            <select class="city-select">
+              <option>--城市--</option>
+            </select>
+            <select class="city-select">
+              <option>--地区--</option>
+            </select>
+            <select class="city-select">
+              <option>--街道--</option>
+            </select>
+          </div>
+        </dd>
+      </dl>
+
+      <dl class="row">
+        <dt class="col-2"><%= f.label :live_address_2, "居住地", class: "caption" %><span class="asterisk">*</span></dt>
+        <dd class="col-2"><%= f.text_field :live_address_2, placeholder: "请输现在居住的地址" %></dd>
+      </dl>
+
+      <dl class="row">
+        <dt class="col-2"><%= f.label :job_seeking_status, "求职状态", class: "caption" %><span class="asterisk">*</span>
+        </dt>
+        <dd class="col-2"><%= f.select(:job_seeking_status, options_for_select([['不在职，正在找工作', '不在职，正在找工作'],
+                                                                                ['在职，近期打算换工作', "在职，近期打算换工作"],
+                                                                                ['在职，有更好的机会才考虑', '在职，有更好的机会才考虑'],
+                                                                                ['不考虑换工作', '不考虑换工作']], @resume.job_seeking_status)) %></dd>
+
+      </dl>
+      <dl class="row">
+        <dt class="col-2"><%= f.label :marrige_status, "婚育状态", class: "caption" %></dt>
+        <dd class="col-2"><%= f.select(:marrige_status, options_for_select([['未婚', '未婚'], ['已婚', "已婚"], ['离异', '离异'],
+                                                                            ['保密', '保密']], @resume.marrige_status)) %></dd>
+
+      </dl>
+      <dl class="row">
+        <dt class="col-2"><%= f.label :education, "学历", class: "caption" %><span class="asterisk">*</span></dt>
+        <dd class="col-2"><%= f.select(:education, options_for_select([['初中', '初中'], ['高中', "高中"], ['中专', '中专'], ['大专', '大专'],
+                                                                       ['本科', "本科"], ['硕士', '硕士'], ['博士', '博士']], @resume.education)) %></dd>
+
+      </dl>
+      <div class="picture">
+        <dt class="col-2"><%= image_tag @resume.picture.url, alt: "用户头像" if @resume.picture? %></dt>
+
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+      </div>
+      <hr>
+      <h3>联系方式</h3>
+      <dl class="row">
+        <dt class="col-2"><%= f.label :phone, "手机号码", class: "caption" %><span class="asterisk">*</span></dt>
+        <dd class="col-2"><%= f.telephone_field :phone, maxlength: 11, size: 20, placeholder: "请输入手机号码" %></dd>
+      </dl>
+
+
+      <div class="row  justify-content-center">
+        <%= f.submit "保存", class: "btn btn-primary col-2" %>
+        <%= link_to "取消", "#", class: "btn btn-default col-2" %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <hr>
+  <div class="row user_info_show" id="user_info_show">
+    <div class="user_image col-2">
+      <%= image_tag @resume.picture.url, alt: "用户头像" if @resume.picture? %>
+    </div>
+
+    <div class="user_info col-10">
+      <div class="basicName">
+        <div class="row">
+          <h4 class="col-8"><%= @resume.name %></h4>
+          <span class="resumeEdit col-4">
+          <%= fa_icon "pencil-square-o" %>
+            <a href="javascript:">编辑</a>
+        </span>
+        </div>
+      </div>
+      <div class="bInfo">
+        <div class="row ">
+          <li class="col-4">
+            <% if @resume.gender == '男' %>
+              <%= fa_icon "mars" %>
+            <% else %>
+              <%= fa_icon "venus" %>
+            <% end %>
+            <%= @resume.gender %>性
+          </li>
+          <li class="col-4"><%= fa_icon "leaf" %>今年<%= @resume.age %>岁</li>
+          <li class="col-4"><%= fa_icon "briefcase" %>已工作<%= @resume.work_age %>年</li>
+        </div>
+        <div class="row">
+          <li class="col-12">求职状态：<%= @resume.job_seeking_status %></li>
+        </div>
+        <div class="row">
+          <li class="col-6">最高学历：<%= @resume.education %></li>
+          <li class="col-6">婚育状态：<%= @resume.marrige_status %></li>
+        </div>
+        <div class="row">
+          <li class="col-12">户籍：<%= @resume.household_register %></li>
+        </div>
+        <div class="row">
+          <li class="col-12">现居地：<%= @resume.live_address_2 %></li>
+        </div>
+        <div class="contact row">
+          <li class="col-6">联系电话：<%= @resume.phone %></li>
+          <li class="col-6">邮箱：<%= @user.email %></li>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".resumeEdit").on('click', function () {
+            $("#edit_user_info").removeClass("d-none");
+            $("#edit_user_info").addClass("d-block");
+            $("#user_info_show").removeClass("d-block");
+            $("#user_info_show").addClass("d-none");
+        })
+    })
+    //检查上传的照片的大小
+    $('#user_picture').bind('change', function () {
+        var pictue_size = this.files[0].size / 1024 / 1024;
+        if (pictue_size > 1) {
+            alert('照片最大不得超过1MB，请选择小一些的照片');
+        }
+    })
+
+</script>

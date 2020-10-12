@@ -13,8 +13,11 @@ zh-CN:
 
   views:
     pagination:
-      previous: '上一页'
-      next: '下一页'
+      first: "&laquo; 首页"
+      last: "末页 &raquo;"
+      previous: "&lsaquo; 上页"
+      next: "下页 &rsaquo;"
+
 
   home:
     no_blog_here: '这里没有博客'

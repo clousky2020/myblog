@@ -19,12 +19,17 @@
 
 
 body {
-  padding-top: 60px;
+  padding-top:60px;
   //background-image:url("background.jpg") ;
 }
 
 
 .nav-item {
+  margin-left: 10px;
+  font-size: x-large;
+}
+
+.dropdown-toggle {
   margin-left: 10px;
   font-size: x-large;
 }
@@ -172,4 +177,12 @@ a.weixin {
     margin: 10px 0;
   }
 }
+
+//鼠标悬停下拉框
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; // remove the gap so it doesn't close
+}
+
+
 

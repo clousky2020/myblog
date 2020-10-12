@@ -1,0 +1,54 @@
+<div class="col-12">
+
+  <%= form_for(zone, url: url) do |f| %>
+    <p class="form-group">
+      <%= f.label :name, "招聘岗位" %><br>
+      <%= f.text_field :name, class: "form-control" %>
+    </p>
+    <p class="form-group">
+      <%= f.label :description, "岗位描述" %><br>
+      <%= f.text_area :description, class: "form-control" %>
+    </p>
+    <p class="form-group">
+      <%= f.label :work_age, "工作年限" %>
+      <%= f.number_field :work_age %>年
+    </p>
+    <p class="form-group">
+      <%= f.label :hiring_number, "招聘人数" %>
+      <%= f.number_field :hiring_number %>人
+    </p>
+    <p class="form-group">
+      <%= label_tag "年龄要求" %>
+      <%= f.number_field :min_age %>~<%= f.number_field :max_age %>岁
+    </p>
+    <p class="form-group">
+      <%= f.label "性别要求" %>
+      <%= f.select(:gender, [['男', 1], ['女', 2], ['不限', 3]]) %>
+    </p>
+
+    <p class="form-group">
+      <%= f.label "语言要求" %>
+      <%= f.select(:language_requirement, [['汉语', 1], ['英语', 2]]) %>
+    </p>
+    <p class="form-group">
+      <%= label_tag "薪资" %>
+      <%= f.number_field :salary_down_limit %>~<%= f.number_field :salary_up_limit %>人民币/月
+    </p>
+    <p class="form-group">
+      <%= f.label "工作区域" %>
+      <%= f.text_field :work_area %>
+    </p>
+    <p class="form-group">
+      <%= f.label "详情地址" %>
+      <%= f.text_field :detailed_address %>
+    </p>
+
+    <p class="form-group">
+      <%= f.label "是否直接发布" %>
+      <%= f.check_box :show %>
+    </p>
+    <div class="text-right">
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

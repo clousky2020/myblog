@@ -14,7 +14,7 @@ module Myblog
 
     config.time_zone = 'Beijing'
     config.active_record.default_timezone = :local
-    # config.i18n.available_locales = [:en, :'zh-CN']
+    config.i18n.available_locales = [:'zh-CN', :en]
     # config.i18n.default_locale = (ENV['LOCALE'] || 'zh-CN').to_sym
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

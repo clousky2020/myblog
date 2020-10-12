@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top justify-content-center">
+  <div class="mr-auto">
+    <%= link_to "clousky's blog", admin_root_path, class: "navbar-brand " %>
+    <%= link_to "返回主页", root_url, class: "nav-item" %>
+
+  </div>
+  <ul id="admin_header_nav" class="nav ml-auto">
+    <%= link_to "博客管理", admin_articles_path , class: "nav-item"%>
+    <%= link_to "分类管理", admin_categorys_path , class: "nav-item"%>
+    <% if session[:login] == true %>
+      <%= link_to "退出", admin_logout_path, class: "nav-item" %>
+    <% end %>
+  </ul>
+</nav>

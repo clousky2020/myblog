@@ -1,46 +1,52 @@
-<div id="popular_articles col-12">
-  <h3>观看量最高的文章</h3>
-  <div class="row">
-    <% @popular_articles.each do |f| %>
-      <span class="tag_item "><%= link_to f.title, article_path(f) %></span>
-      <hr>
+<% if @popular_articles.any? %>
+  <div id="popular_articles col-sm-12">
+    <h3>观看量最高的文章</h3>
+    <div class="">
+      <% @popular_articles.each do |f| %>
+        <div class="tag_item "><%= link_to f.title, article_path(f) %></div>
+        <br>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+<% end %>
+
+<% if @comments.any? %>
+  <div id="right_comments">
+    <h3>最新的评论</h3>
+    <% @comments.each do |comment| %>
+      <div class="comments_content">
+        <%= truncate comment.content, length: 20 %><br>
+        --- <%= link_to comment.article.title, article_path(comment.article) %>
+        <hr>
+      </div>
     <% end %>
   </div>
-</div>
-<hr>
-
-<div id="right_comments">
-  <h3>最新的评论</h3>
-  <% @comments.each do |comment| %>
-    <div class="comments_content">
-      <%= truncate comment.content, length: 20 %><br>
-      --- <%= link_to comment.article.title, article_path(comment.article) %>
-      <hr>
-    </div>
-  <% end %>
-</div>
+<% end %>
 
 <div id="filter-tags">
-  <div id="categories">
-    <h3>分类筛选</h3>
-    <div class="row">
-      <% @categories.each do |f| %>
-        <div class="category-item "><%= f %></div>
-      <% end %>
+  <% if @categories.any? %>
+    <div id="categories">
+      <h3>分类筛选</h3>
+      <div class="row">
+        <% @categories.each do |f| %>
+          <div class="category-item "><%= f %></div>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <hr>
-
-  <div id="tag_list ">
-    <h3>标签筛选</h3>
-    <div class="row">
-      <% @labels.each do |f| %>
-        <span class="tag_item "><%= f %></span>
-      <% end %>
+    <hr>
+  <% end %>
+  <% if @labels.any? %>
+    <div id="tag_list ">
+      <h3>标签筛选</h3>
+      <div class="row">
+        <% @labels.each do |f| %>
+          <span class="tag_item "><%= f %></span>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <hr>
-
+    <hr>
+  <% end %>
 </div>
 
 

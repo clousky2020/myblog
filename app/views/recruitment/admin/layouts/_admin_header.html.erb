@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top justify-content-center">
+  <div class="mr-auto">
+    <%= link_to "招聘网站demo", recruitment_root_url, class: "navbar-brand " %>
+    <%= link_to "返回博客", root_url, class: "nav-item" %>
+  </div>
+  <ul id="admin_header_nav" class="nav ml-auto">
+    <% if current_user %>
+      <% if @current_company %>
+        <%= render "recruitment/admin/layouts/company_header" %>
+      <% elsif @current_user %>
+        <%= render "recruitment/admin/layouts/user_header" %>
+      <% end %>
+    <% end %>
+  </ul>
+</nav>

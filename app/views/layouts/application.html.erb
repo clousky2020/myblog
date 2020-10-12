@@ -13,19 +13,12 @@
 </head>
 
 <body class= <%= yield(:bg) %>>
-
 <%= render "layouts/header" %>
-<div class="flash_info">
-  <% flash.each do |type, msg| %>
-    <div class="alert alert-info">
-      <%= msg %>
-    </div>
-  <% end %>
+<div class="container-fluid">
+  <%= render "shard/flashes" %>
+
+  <%= yield %>
 </div>
-
-<%= yield %>
-
-
 <%= render 'layouts/footer' %>
 </body>
 </html>
