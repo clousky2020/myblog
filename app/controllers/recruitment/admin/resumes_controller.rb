@@ -14,9 +14,7 @@ class Recruitment::Admin::ResumesController < ApplicationController
     #如果不存在第一份简历，则创建
     if !@resume
       @user.recruitment_resumes.create
-      @user.save
     end
-
   end
 
   def update
@@ -33,17 +31,18 @@ class Recruitment::Admin::ResumesController < ApplicationController
   end
 
   def send_resume
-    job = Recruitment::Job.find(params[:id])
+    job = Recruitment::Job.find(params[:user_id])
     user = current_user
     #检查目前的用户是不是个人用户
-    if user.recruitment_resumes
+    if user
       resume = user.recruitment_resumes.find_by(is_default: true)
       if !job.recruitment_resumes.exists?(resume.id)
         job.recruitment_resumes << resume
       end
-      render 'recruitment/admin/resumess/send_resumn'
+      # flash[:notice] = "成功投递简历了"
+      render 'recruitment/admin/resumes/send_resumn'
     else
-      flash[:warning] = "只有个人用户才能投递简历"
+      # flash[:warning] = "只有个人用户才能投递简历"
       render 'recruitment/admin/resumes/send_resumn_faile'
     end
   end

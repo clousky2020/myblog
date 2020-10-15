@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-sm bg-light fixed-top justify-content-center">
   <div class="navbar-header mr-auto">
-    <%= link_to "招聘网站demo", recruitment_root_url, class: "navbar-brand " %>
+    <%= link_to "招聘网站demo", recruitment_root_url, class: "navbar-brand" %>
     <%= link_to "返回博客", root_url, class: "nav-item" %>
   </div>
   <nav id="admin_header_nav" class="nav ml-auto">
-    <% if !current_user %>
+    <% if !current_user && !current_company %>
       <div class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           个人入口
@@ -21,14 +21,14 @@
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right">
-          <li><%= link_to "企业注册", "#", class: "nav-item" %></li>
-          <li><%= link_to "企业登录", new_recruitment_companysession_path, class: "nav-item" %></li>
+          <li><%= link_to "企业注册", new_recruitment_company_register_path, class: "nav-item" %></li>
+          <li><%= link_to "企业登录", new_recruitment_company_session_path, class: "nav-item" %></li>
         </ul>
       </div>
-    <% elsif @current_company %>
+    <% elsif current_company %>
       <%= link_to "进入后台管理", recruitment_admin_jobs_path, class: "nav-item" %>
       <%= render "recruitment/admin/layouts/company_header" %>
-    <% elsif @current_user %>
+    <% elsif current_user %>
       <%= render "recruitment/admin/layouts/user_header" %>
     <% end %>
   </nav>

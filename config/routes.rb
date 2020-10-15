@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # 博客
   mount Ckeditor::Engine => '/ckeditor'
   root 'articles#index'
@@ -30,19 +29,21 @@ Rails.application.routes.draw do
   # 招聘网站
   namespace :recruitment do
     root "jobs#index"
+    post "/job_search", to: "jobs#job_search"
     resources :jobs, :only => [:index, :show]
-
     resources :sessions, :only => [:new, :create, :destroy]
-    resources :companysessions, :only => [:new, :create, :destroy]
+    resources :company_sessions, :only => [:new, :create, :destroy]
     resources :register, :only => [:new, :create]
+    resources :company_register, :only => [:new, :create]
     namespace :admin do
       resources :jobs do
         member do
           get :push
+          get :job_resumes
         end
       end
       resources :user do
-        resources :resumes do
+        resources :resumes, :only => [:new, :show, :update] do
           member do
             get :send_resume
           end

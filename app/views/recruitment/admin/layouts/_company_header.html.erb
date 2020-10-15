@@ -1,12 +1,12 @@
 <div class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-    Hi!,<%= @current_company.company_name %>
+    Hi!,<%= current_company.company_name %>
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><%= link_to "公司信息", "#", class: "nav-item" %></li>
-    <li><%= link_to "账号设置", "#", class: "nav-item" %></li>
-    <li><%= link_to "退出", recruitment_companysession_path(@current_company), method: :delete, class: "nav-item" %></li>
+    <li><%= link_to "公司信息(暂不可用", "#", class: "nav-item" %></li>
+    <li><%= link_to "账号设置(暂不可用", "#", class: "nav-item" %></li>
+    <li><%= link_to "退出", recruitment_company_session_path(current_company), method: :delete, class: "nav-item" %></li>
   </ul>
 
 </div>

@@ -1,0 +1,25 @@
+<!--<div class="container">-->
+<!--  <div class="col-4 offset-4">-->
+<!--    <h2>企业登录</h2>-->
+    <%#= form_for(:session, url: recruitment_company_sessions_path) do |f| %>
+<!--      <div class="field">-->
+<!--        <%#= f.label :email %><br/>-->
+        <%#= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control"%>
+<!--      </div>-->
+
+<!--      <div class="field">-->
+<!--        <%#= f.label :password %><br/>-->
+        <%#= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+<!--      </div>-->
+<!--      <div class="actions text-center">-->
+        <%#= f.submit "登录", class: "btn btn-primary " %>
+<!--      </div>-->
+    <%# end %>
+<!--  </div>-->
+<!--</div>-->
+
+
+<%provide(:head_title,"企业登录") %>
+<%provide(:submit_text,"企业登录") %>
+
+<%=render "recruitment/common/session_form",object: :session,url: recruitment_company_sessions_path%>

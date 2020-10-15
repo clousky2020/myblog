@@ -1,0 +1,43 @@
+<div class="job_list" id="job_list">
+
+  <div class="job_display">
+    <div class="job_display_left">
+
+      <div class="head_info row">
+        <div class="jobs_num mr-8">
+          <span>总计有个<%= @jobs.count %>岗位正在招聘</span>
+        </div>
+        <div class="job_option ml-auto">
+          <span>暂无</span>
+        </div>
+
+      </div>
+
+      <div class="middle_info">
+        <% @jobs.each do |job| %>
+          <div class="job_content">
+            <ul class="row list1">
+              <li class="col-4"><%= link_to job.name, recruitment_job_path(job) %></li>
+              <li class="col-4"><%= job.salary_down_limit %>-<%= job.salary_up_limit %>元</li>
+              <li class="col-4"><%=link_to job.recruitment_company.company_name,"#" %></li>
+            </ul>
+            <ul class="row list2">
+              <li class="col-4"><%= job.recruitment_company.company_address %></li>
+              <li class="col-4"><%= job.updated_at.strftime("%Y-%m-%d") %></li>
+              <li class="col-4"><%= job.recruitment_company.company_type %>
+                |<%= job.recruitment_company.company_size %></li>
+            </ul>
+            <ul class="row job_labels text-center">
+              <li class="col-12">该工作的标签</li>
+
+            </ul>
+          </div>
+          <hr>
+        <% end %>
+      </div>
+      <div class="pagination"><%= paginate @jobs %></div>
+    </div>
+  </div>
+
+
+</div>

@@ -8,6 +8,7 @@ class Recruitment::SessionsController < ApplicationController
     user = Recruitment::User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       login_in user
+      # user.update_user_login_time #更新用户的最后登录时间
       flash[:success] = "成功登录"
       redirect_to recruitment_jobs_url
     else

@@ -38,7 +38,6 @@ end
   user.name = "个人用户#{num}"
   user.email = "user#{num}@qq.com"
   user.password = "123456"
-  user.recruitment_resumes.gender = ['男', '女'].sample
   user.save
 end
 

@@ -3,10 +3,15 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+
+import jquery from 'jquery';
+window.$ = window.jquery = jquery;
 import 'bootstrap'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -19,7 +24,7 @@ import 'bootstrap'
 //博客内容使用的js
 $(document).ready(function () {
     //分类筛选
-    $(document).on('click',".category-item",function () {
+    $(document).on('click', ".category-item", function () {
         var ele = $(this).text();
         $.post('/search',
             {category: ele}
@@ -29,7 +34,7 @@ $(document).ready(function () {
         }
     });
     //右边的标签点击
-    $(document).on('click',".tag_item",function () {
+    $(document).on('click', ".tag_item", function () {
         var ele = $(this).text();
         $.post('/search',
             {label: ele}

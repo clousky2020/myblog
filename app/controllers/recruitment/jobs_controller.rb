@@ -18,7 +18,12 @@ class Recruitment::JobsController < ApplicationController
     @job.increment!(:views, 1)
   end
 
-
+  def job_search
+    if params[:search]
+      @jobs = Recruitment::Job.published.where('name LIKE ?', "%#{params[:search]}%").order("created_at DESC").page(params[:page])
+    end
+    render 'recruitment/jobs/refresh_index'
+  end
 
 
 end

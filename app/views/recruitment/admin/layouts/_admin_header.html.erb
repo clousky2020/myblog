@@ -4,12 +4,10 @@
     <%= link_to "返回博客", root_url, class: "nav-item" %>
   </div>
   <ul id="admin_header_nav" class="nav ml-auto">
-    <% if current_user %>
-      <% if @current_company %>
-        <%= render "recruitment/admin/layouts/company_header" %>
-      <% elsif @current_user %>
-        <%= render "recruitment/admin/layouts/user_header" %>
-      <% end %>
+    <% if current_company %>
+      <%= render "recruitment/admin/layouts/company_header" %>
+    <% elsif current_user %>
+      <%= render "recruitment/admin/layouts/user_header" %>
     <% end %>
   </ul>
 </nav>

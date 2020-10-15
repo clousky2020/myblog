@@ -6,8 +6,15 @@ class Recruitment::RegisterController < ApplicationController
   end
 
   def create
-    @user = Recruitment::User.create(user_params)
-    if @user.save
+    @user = Recruitment::User.new(user_params)
+
+    if params[:user][:password].empty?
+      @user.errors.add(:password, "不能为空")
+      render "recruitment/register/new"
+    elsif params[:user][:password] != params[:user][:password_confirmation]
+      @user.errors.add("确认的密码不同，请重新输入!")
+      render "recruitment/register/new"
+    elsif @user.save!
       flash[:success] = "成功创建用户"
       login_in(@user)
       redirect_to recruitment_root_path

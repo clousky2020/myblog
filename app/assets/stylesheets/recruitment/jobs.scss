@@ -3,13 +3,33 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-
-.job_detail{
+.job_detail {
   background-color: #f8f8f8;
   border-radius: 1px;
 }
 
-.job_favorite_share_clearfix{
+.job_favorite_share_clearfix {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+//主页显示的工作列表
+.head_info {
+  background-color: #CCCCCC;
+}
+
+.middle_info {
+
+  li {
+    list-style: none;
+  }
+
+  .job_content {
+    background-color: white;
+  }
+
+}
+
+.job_content:hover {
+  background-color: #797979;
 }

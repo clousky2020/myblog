@@ -8,7 +8,9 @@ class Recruitment::Resume < ApplicationRecord
   after_create :create_set_default
 
   def calculate_age
-    self.age = Time.now.year - self.birth.year
+    now = Time.now.utc.to_date
+
+    self.age = now.year - self.birth.year - ((now.month > self.birth.month || (now.month == self.birth.month && now.day >= self.birth.day)) ? 0 : 1)
     self.save
   end
 

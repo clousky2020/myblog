@@ -2,40 +2,19 @@
   <h1>招聘网站demo</h1>
   <%= render "recruitment/common/search" %>
 
-  <div class="dropdown clearfix pull-right">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true">
-      排序<span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-      <li><%=link_to("薪资上限",recruitment_jobs_url(:order=>"by_salary_upper")) %></li>
-      <li><%=link_to("薪资下限",recruitment_jobs_url(:order=>"by_salary_lower")) %></li>
-      <li><%=link_to("最近发布时间",recruitment_jobs_url) %></li>
-    </ul>
-  </div>
+<!--  <div class="dropdown clearfix pull-right">-->
+<!--    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true">-->
+<!--      排序<span class="caret"></span>-->
+<!--    </button>-->
+<!--    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">-->
+<!--      <li><%#= link_to("薪资上限", recruitment_jobs_url(:order => "by_salary_upper")) %></li>-->
+<!--      <li><%#= link_to("薪资下限", recruitment_jobs_url(:order => "by_salary_lower")) %></li>-->
+<!--      <li><%#= link_to("最近发布时间", recruitment_jobs_url) %></li>-->
+<!--    </ul>-->
+<!--  </div>-->
 
-  <table class="table table-hover table-active">
-    <thead>
-    <tr>
-      <td>标题</td>
-      <td>薪资上限</td>
-      <td>薪资下限</td>
-      <td>刊登时间</td>
-    </tr>
-    </thead>
-    <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= link_to job.name, recruitment_job_path(job) %></td>
-
-        <td><%= job.salary_up_limit %></td>
-        <td><%= job.salary_down_limit %></td>
-        <td><%= job.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <%= render 'recruitment/jobs/job_list' %>
 
 
-  <div class="pagination"><%= paginate @jobs %></div>
 
 </div>

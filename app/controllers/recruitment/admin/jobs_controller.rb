@@ -61,7 +61,10 @@ class Recruitment::Admin::JobsController < ApplicationController
     redirect_to recruitment_admin_jobs_url
   end
 
-
+  def job_resumes
+    @job = Recruitment::Job.find(params[:id])
+    @resumes = @job.recruitment_resumes
+  end
 
   private
 

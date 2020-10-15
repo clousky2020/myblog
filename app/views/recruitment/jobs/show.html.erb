@@ -1,1 +1,31 @@
-<%=render "job_info",job:@job %>
+<%= render "job_info", job: @job %>
+
+
+
+<div class="modal fade" id="send_resume_dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">通知</h4>
+      </div>
+      <div class="modal-body">您的简历已经投递过去了，请静待消息！</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="send_resume_dialog_faile">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">通知</h4>
+      </div>
+      <div class="modal-body">只有个人用户才能投递简历</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+      </div>
+    </div>
+  </div>
+</div>

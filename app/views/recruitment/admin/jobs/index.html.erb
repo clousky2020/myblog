@@ -15,7 +15,11 @@
   <% @jobs.each do |job| %>
     <tr>
       <td><%= job.name %></td>
-      <td><%= job.recruitment_resumes.count %></td>
+      <% if job.recruitment_resumes.count <= 0 %>
+        <td><%= job.recruitment_resumes.count %></td>
+      <% else %>
+        <td><%= link_to job.recruitment_resumes.count, job_resumes_recruitment_admin_job_path(job) %></td>
+      <% end %>
       <% if job.show %>
         <td><%= link_to fa_icon("eye-slash"), push_recruitment_admin_job_path(job) %></td>
       <% else %>

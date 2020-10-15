@@ -1,0 +1,8 @@
+
+  <div class="main-search text-center">
+    <%= form_tag(recruitment_job_search_path, remote:true) do %>
+      <%= label_tag :search, "职位名称" %>
+      <%= text_field_tag :search, '', size: 40 %>
+      <%= submit_tag('搜索') %>
+    <% end %>
+  </div>

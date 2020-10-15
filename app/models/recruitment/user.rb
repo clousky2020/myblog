@@ -11,4 +11,8 @@ class Recruitment::User < ApplicationRecord
     self.recruitment_resumes.find_by(is_default: true)
   end
 
+  def update_user_login_time
+    self.last_login_time = Time.now
+    self.save
+  end
 end

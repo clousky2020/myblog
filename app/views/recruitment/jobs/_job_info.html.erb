@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="job_detail_info">
   <div class="main_info col-md-8 col-xs-12">
 
     <div class="job_title row">
@@ -6,9 +6,11 @@
         <h2><%= job.name %></h2>
         <span class="salary"><%= job.salary_down_limit %>~<%= job.salary_up_limit %>元/月</span>
       </div>
-      <% if @current_user %>
+      <% if current_user %>
         <div class="ml-auto">
-          <%= link_to "投递简历", send_resume_recruitment_admin_user_resume_path(job), remote: true, class: "btn btn-primary" %>
+
+          <%= link_to "投递简历", send_resume_recruitment_admin_user_resume_path(job), id: "send_resume", remote: true, class: "btn btn-primary" %>
+
         </div>
       <% end %>
     </div>
@@ -81,7 +83,8 @@
         <div class="row">
 
           <div class="col-4">
-            <div class="contact"><%= fa_icon "user" %>联系人:<%= job.recruitment_company.company_recruiter_name %></div>
+            <div class="contact"><%= fa_icon "user" %>
+              联系人:<%= job.recruitment_company.company_recruiter_name %></div>
           </div>
           <div class="col-4">
             <div class="contact"><%= fa_icon "phone" %>联系电话:<%= job.recruitment_company.recruiter_phone %></div>
@@ -100,3 +103,19 @@
 
 
 </div>
+
+
+
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $("#send_resume2").on('click', function () {-->
+<!--            $.post(<%#=send_resume_recruitment_admin_user_resume_url(@job) %>,-->
+<!--                {user_id:<%=@job.id %>}, function (data, status) {-->
+<!--                    alert(data + "  --状态：" + status);-->
+<!--                }-->
+<!--            )-->
+
+<!--            $("#send_resume_dialog").modal('show');-->
+<!--        })-->
+<!--    })-->
+<!--</script>-->
