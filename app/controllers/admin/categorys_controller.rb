@@ -1,4 +1,5 @@
 class Admin::CategorysController < ApplicationController
+  before_action :authenticate_login
   layout "admin/layouts/admin"
 
   def index
