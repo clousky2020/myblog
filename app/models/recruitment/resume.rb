@@ -9,7 +9,6 @@ class Recruitment::Resume < ApplicationRecord
 
   def calculate_age
     now = Time.now.utc.to_date
-
     self.age = now.year - self.birth.year - ((now.month > self.birth.month || (now.month == self.birth.month && now.day >= self.birth.day)) ? 0 : 1)
     self.save
   end

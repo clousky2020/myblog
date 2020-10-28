@@ -4,7 +4,7 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><%= link_to "我的简历", recruitment_admin_user_resume_path(current_user.id, current_user.get_default_resume.id), class: "nav-item" %></li>
+    <li><%= link_to "我的简历", edit_recruitment_admin_user_resume_path(current_user.id, current_user.get_default_resume.id), class: "nav-item" %></li>
     <li><%= link_to "退出", recruitment_session_path(current_user), method: :delete, class: "nav-item" %></li>
   </ul>
 </div>

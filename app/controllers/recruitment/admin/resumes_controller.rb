@@ -1,14 +1,11 @@
 class Recruitment::Admin::ResumesController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, except: :show
   layout "recruitment/admin/layouts/admin"
 
   def new
   end
 
   def edit
-  end
-
-  def show
     @user = Recruitment::User.find(params[:user_id])
     @resume = @user.recruitment_resumes.find(params[:id])
     #如果不存在第一份简历，则创建
@@ -17,12 +14,17 @@ class Recruitment::Admin::ResumesController < ApplicationController
     end
   end
 
+  def show
+    @resume = Recruitment::Resume.find(params[:id])
+    @resume.calculate_age
+  end
+
   def update
     @user = Recruitment::User.find(params[:user_id])
     @resume = @user.recruitment_resumes.find(params[:id])
     if @resume.update(resumes_params)
       @resume.calculate_age
-      flash[:notice] = "成功更新"
+      # flash[:notice] = "成功更新"
       render 'recruitment/admin/resumes/update_ok'
     else
       flash[:warning] = "更新失败,原因是#{@user.errors.full_messages.to_s}"

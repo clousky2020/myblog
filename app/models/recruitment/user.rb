@@ -15,4 +15,11 @@ class Recruitment::User < ApplicationRecord
     self.last_login_time = Time.now
     self.save
   end
+
+  def user_resume_exists_IfNoTo_create
+    if !self.recruitment_resumes.find_by(is_default: true)
+      self.recruitment_resumes.create
+    end
+  end
+
 end

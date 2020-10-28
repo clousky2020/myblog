@@ -9,8 +9,31 @@
   margin-left: auto;
 }
 
-.asterisk{
+.asterisk {
   color: red;
   margin-right: auto;
   margin-left: auto;
 }
+
+.resume_head {
+  border: 1px solid black;
+  background-color: azure;
+}
+
+.user_head {
+  border: 1px solid black;
+}
+
+.v_line {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+.second_info, .third_info, .third_info {
+  margin-top: 30px;
+}
+

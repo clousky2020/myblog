@@ -1,0 +1,26 @@
+<h1>工作相关的简历</h1>
+<table class="table table-hover table-active">
+  <thead>
+  <tr>
+    <td>投递人姓名</td>
+    <td>性别</td>
+    <td>年龄</td>
+    <td>操作</td>
+    <td>操作</td>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% @resumes.each do |resume| %>
+    <tr>
+      <td><%= resume.name %></td>
+      <td><%= resume.gender %></td>
+      <td><%= resume.age %></td>
+
+      <td><%= link_to "查看", recruitment_admin_user_resume_path(resume) %></td>
+
+      <td><%= link_to "发送面试邀约", "#" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

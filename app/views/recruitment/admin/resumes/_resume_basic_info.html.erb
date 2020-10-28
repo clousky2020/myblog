@@ -1,10 +1,9 @@
-<div class="resumes_body col-md-10 offset-md-2" id="resumes_body">
-
-  <div class="edit_user_info d-none " id="edit_user_info">
+<div class="resumeManger_basic">
+  <div class=" edit_user_info d-none " id="edit_user_info">
     <div class="iTitle">
       <h3>基本资料</h3>
     </div>
-    <%= form_for(@resume, url: recruitment_admin_user_resume_path(@user), method: :put, remote: true) do |f| %>
+    <%= form_for(@resume, url: recruitment_admin_user_resume_path(@user, @resume.id), method: :put, remote: true) do |f| %>
       <dl class="row">
         <dt class="col-2"><%= f.label :name, "姓名", class: "caption" %><span class="asterisk">*</span></dt>
         <dd class="col-10"><%= f.text_field :name %></dd>
@@ -37,9 +36,11 @@
           <div class="city-group">
             <select class="city-select">
               <option>--省份--</option>
+              <%= options_for_select(ChinaCity.list) %>
             </select>
             <select class="city-select">
               <option>--城市--</option>
+              <%= options_for_select(ChinaCity.list) %>
             </select>
             <select class="city-select">
               <option>--地区--</option>
@@ -48,11 +49,18 @@
               <option>--街道--</option>
             </select>
           </div>
+
+          <div class="city-group">
+            <%= select_tag :province, options_for_select(ChinaCity.list.unshift(["--省份--", 0]), 0), class: "city-select" %>
+            <%= select_tag :city, options_for_select([["--城市--", 0]]), class: "city-select" %>
+            <%= select_tag :area, options_for_select([["--地区--", 0]]), class: "city-select" %>
+
+          </div>
         </dd>
       </dl>
 
       <dl class="row">
-        <dt class="col-2"><%= f.label :live_address_2, "居住地", class: "caption" %><span class="asterisk">*</span></dt>
+        <dt class="col-2"><%= f.label :live_address_2, "居住地", class: "caption" %></dt>
         <dd class="col-2"><%= f.text_field :live_address_2, placeholder: "请输现在居住的地址" %></dd>
       </dl>
 
@@ -92,7 +100,7 @@
 
       <div class="row  justify-content-center">
         <%= f.submit "保存", class: "btn btn-primary col-2" %>
-        <%= link_to "取消", "#", class: "btn btn-default col-2" %>
+        <a class="btn btn-default col-2" id="edit_user_info_cancel">取消</a>
       </div>
     <% end %>
 
@@ -103,12 +111,11 @@
     <div class="user_image col-2">
       <%= image_tag @resume.picture.url, alt: "用户头像" if @resume.picture? %>
     </div>
-
     <div class="user_info col-10">
       <div class="basicName">
         <div class="row">
           <h4 class="col-8"><%= @resume.name %></h4>
-          <span class="resumeEdit col-4">
+          <span class="user_basic_edit col-4 text-right">
           <%= fa_icon "pencil-square-o" %>
             <a href="javascript:">编辑</a>
         </span>
@@ -149,24 +156,6 @@
     </div>
 
   </div>
-
 </div>
 
-<script>
-    $(document).ready(function () {
-        $(".resumeEdit").on('click', function () {
-            $("#edit_user_info").removeClass("d-none");
-            $("#edit_user_info").addClass("d-block");
-            $("#user_info_show").removeClass("d-block");
-            $("#user_info_show").addClass("d-none");
-        })
-    })
-    //检查上传的照片的大小
-    $('#user_picture').bind('change', function () {
-        var pictue_size = this.files[0].size / 1024 / 1024;
-        if (pictue_size > 1) {
-            alert('照片最大不得超过1MB，请选择小一些的照片');
-        }
-    })
 
-</script>

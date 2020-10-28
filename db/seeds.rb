@@ -6,16 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# label = "测试用标签"
-# Label.create(name: label)
-#
-# (1..60).each do |num|
-#   a = Article.new
-#   a.title = "测试用，第#{num}篇"
-#   a.content = "这是测试用的自动生成内容，序号：#{num}"
-#   a.save
-#   a.labels << Label.first
-# end
+
+labels = ["随笔", "技术知识", "测试"]
+labels.each do |label|
+  Label.create(name: label)
+end
+if Rails.env.development?
+  (1..60).each do |num|
+    a = Article.new
+    a.title = "测试用，第#{num}篇"
+    a.content = "这是测试用的自动生成内容，序号：#{num}"
+    a.save
+    a.labels << Label.first
+  end
+end
 
 positions = ['设计师', '教师', '程序员', '操作工']
 work_contents = ['设计', '讲课', '编写', '操作', '摸鱼']

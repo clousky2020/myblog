@@ -17,6 +17,7 @@ class Recruitment::RegisterController < ApplicationController
     elsif @user.save!
       flash[:success] = "成功创建用户"
       login_in(@user)
+      @user.user_resume_exists_IfNoTo_create
       redirect_to recruitment_root_path
     else
       flash[:warning] = "创建用户失败，#{@user.errors.full_messages.to_s}"

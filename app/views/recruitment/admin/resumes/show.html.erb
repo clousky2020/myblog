@@ -1,2 +1,105 @@
-<h1>简历管理</h1>
-<%= render "recruitment/admin/resumes/form" %>
+<h1>简历展示</h1>
+<div class="content col-10">
+  <div class="resume_head row ">
+    <div class="mr-auto">
+      <span>简历编号：<%= @resume.id %></span>
+    </div>
+    <div class="ml-auto">
+      <% if @resume.recruitment_user.last_login_time %>
+        <span>最近登录：<%= @resume.recruitment_user.last_login_time.to_date %></span>
+      <% end %>
+    </div>
+  </div>
+  <div class="resume">
+    <div class="first_info row">
+      <div class="user_head mr-auto col-2">
+        <% if @resume.picture? %>
+          <%= image_tag @resume.picture.url, alt: '用户头像' %>
+        <% else %>
+          <span>用户头像</span>
+        <% end %>
+      </div>
+      <div class="mr-auto col-10">
+        <h4 class="user_name"><%= @resume.name %></h4>
+        <div class="second_line">
+          <div class="base_info">
+            <span><%= @resume.gender %></span><span class="v_line">|</span>
+            <span><%= @resume.age %>岁</span><span class="v_line">|</span>
+            <span><%= @resume.education %></span><span class="v_line">|</span>
+            <span><%= @resume.work_age %>年以上</span><span class="v_line">|</span>
+            <span><%= @resume.marrige_status %>年以上</span>
+          </div>
+
+          <div class="address_info">
+            <ul>
+              <li>
+                <span class="name">户籍：</span> <span class="text"><%= @resume.household_register %></span>
+              </li>
+              <li>
+                <span class="name">现居地：</span> <span class="text"><%= @resume.residential_address %></span>
+              </li>
+            </ul>
+          </div>
+          <div class="contact_info">
+            <ul>
+              <li>
+                <span class="name">联系电话：</span><span class="text"><%= @resume.phone %></span>
+              </li>
+              <li>
+                <span class="name">邮箱地址：</span><span class="text"><%= @resume.recruitment_user.email %></span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="second_info">
+      <div class="title row">
+        <%= fa_icon "location-arrow", class: "fa-2x" %>
+        <h3>求职意向</h3>
+      </div>
+      <dl class="row ">
+        <dt class="col-2">希望从事:</dt>
+        <dd class="col-10"><%= @resume.intention_job %></dd>
+        <dt class="col-2">工作地点:</dt>
+        <dd class="col-10"><%= @resume.expect_work_site %></dd>
+        <dt class="col-2">期望岗位:</dt>
+        <dd class="col-10"><%= @resume.job_category %></dd>
+        <dt class="col-2">求职状态:</dt>
+        <dd class="col-10"><%= @resume.job_seeking_status %></dd>
+        <dt class="col-2">期望薪资:</dt>
+        <dd class="col-10"><%= @resume.expect_salary %></dd>
+      </dl>
+    </div>
+
+    <div class="third_info">
+      <div class="title row">
+        <%= fa_icon "briefcase", class: "fa-2x" %>
+        <h3>教育和培训经历</h3>
+      </div>
+      <dl>
+        <dt>希望从事</dt>
+        <dd><%= @resume.intention_job %></dd>
+
+      </dl>
+    </div>
+
+    <div class="fourth_info">
+      <div class="title row">
+        <%= fa_icon "briefcase", class: "fa-2x" %>
+        <h3>其他信息</h3>
+      </div>
+      <dl>
+
+        <dt>未命名</dt>
+        <dd><%= @resume.inspect %></dd>
+
+      </dl>
+    </div>
+
+  </div>
+
+</div>
+
+

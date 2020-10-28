@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   # 招聘网站
+  mount ChinaCity::Engine => '/china_city'
   namespace :recruitment do
     root "jobs#index"
     post "/job_search", to: "jobs#job_search"
@@ -43,7 +44,7 @@ Rails.application.routes.draw do
         end
       end
       resources :user do
-        resources :resumes, :only => [:new, :show, :update] do
+        resources :resumes, :only => [:new, :edit, :show, :update] do
           member do
             get :send_resume
           end

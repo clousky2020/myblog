@@ -1,0 +1,70 @@
+<div class="resumeManger_objective ">
+  <div class=" edit_objective d-none ">
+    <div class="iTitle">
+      <h3>求职意向</h3>
+    </div>
+    <%= form_for(@resume, url: recruitment_admin_user_resume_path(@user, @resume.id), method: :put, remote: true) do |f| %>
+      <dl class="row">
+        <dt class="col-3"><%= f.label :intention_job, "意向岗位", class: "caption " %></dt>
+        <dd class="col-9"><%= f.text_field :intention_job %></dd>
+      </dl>
+      <dl class="row">
+        <dt class="col-3"><%= f.label :job_category, "职位类别", class: "caption " %></dt>
+        <dd class="col-9"><%= f.text_field :job_category %></dd>
+      </dl>
+      <dl class="row">
+        <dt class="col-3"><%= f.label :expect_salary, "期望月薪", class: "caption " %></dt>
+        <dd class="col-9"><%= f.select(:expect_salary, options_for_select([['面议', '面议'], ['1000', "1000"], ['1500', '1500'],
+                                                                           ['2000', '2000'], ['2500', "2500"], ['3000', "3000"],
+                                                                           ['4000', '4000'], ['5000', '5000'], ['6000', "6000"],
+                                                                           ['7000', "7000"], ['8000', '8000'], ['9000', '9000'],
+                                                                           ['1万', "1万"], ['1.5万', '1.5万'], ['2万', '2万'],
+                                                                           ['3万', "3万"], ['4万', '4万'], ['5万', '5万'],
+                                                                           ['10万', "10万"], ['50万', '50万'], ['100万', '100万'],
+                                                                          ], @resume.expect_salary)) %>元/月
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="col-3"><%= f.label :expect_work_site, "期望工作地点", class: "caption " %></dt>
+        <dd class="col-9"><%= f.text_field :expect_work_site %></dd>
+      </dl>
+
+      <div class="row justify-content-center">
+        <%= f.submit "保存", class: "btn btn-primary col-2" %>
+        <a class="btn btn-default col-2" id="edit_user_objective_cancel">取消</a>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="row user_objective_show" id="user_objective_show">
+    <div class="col-12">
+      <div class="row ">
+        <div class="col-md-8 ">
+          <h4>求职意向</h4>
+        </div>
+        <div class="col-md-4 text-right user_objective_edit">
+          <%= fa_icon "pencil-square-o" %>
+          <a href="javascript:">编辑</a>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-6 column">
+          意向岗位：<%= @resume.intention_job %>
+        </div>
+        <div class="col-md-6 column">
+          职位类别：<%= @resume.job_category %>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-6 column">
+          期望月薪：<%= @resume.expect_salary %>
+        </div>
+        <div class="col-md-6 column">
+          期望工作地点：<%= @resume.expect_work_site %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
